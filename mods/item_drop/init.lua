@@ -58,8 +58,10 @@ end
 end
 end)
 
+local drop_it = minetest.setting_getbool("items_on_ground")
 
---[[function minetest.handle_node_drops(pos, drops, digger)
+function minetest.handle_node_drops(pos, drops, digger)
+if drop_it == true then
 	for _,item in ipairs(drops) do
 		local count, name
 		if type(item) == "string" then
@@ -91,5 +93,6 @@ end)
 				end
 			end
 		end
+	end
 	end
 end--]]
