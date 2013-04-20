@@ -1,0 +1,25 @@
+Version 3.c:
+- wheat_seed and wheat_harvested are now the same
+- cotton plant drops the cotton of flowers-mod - can be craftet to wool - wool to strings
+- weeds drop seed instead of soil
+- removed big pumpkin
+- fix planting bug
+- bread stackable again
+- hoeable soil is in a table, plantabe soil to - to work better with other mods
+Version 3:
+- make pumpkins with face not craftable but created by punching with a sword
+- change groups of pumpkins to more wood like
+- add big pumpkin
+- add scarecrow
+- make bread non stackable
+- make saplings plantable everywhere (they still grow only with light and wet soil)
+- add weed
+- add fuel attributes to nearly everything
+- add pumpkin bread
+Version 2:
+- soil dont turn to dirt when walking over it
+- fix hoe bug
+- rename corn to wheat
+- new textures for harvested wheat
+- make cotton drop strings when harvested
+- add rubber
