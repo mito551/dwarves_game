@@ -44,7 +44,7 @@ Cast Iron is a block. VERY(and i'm thinking of making it stronger) strong one.
 Durin's axe - Best weapon
 Mithril (ore like ebony)
 Adamantium (alloy = pobe + mithril + diamond, best tools in the game, a bit slower than original mese)
-
+...and MUCH and MUCH more!!
 
 depends:
 0.4.6
