@@ -19,7 +19,8 @@ minetest.register_node("farming:weed", {
 			{ items = {'farming:cotton_seed'}, rarity = 21 },
 			{ items = {'farming:tea_seed'}, rarity = 27 },
 			{ items = {'farming:rice_seed'}, rarity = 13 },
-			{ items = {'farming:pumpkin_seed'}, rarity = 34 }
+			{ items = {'farming:pumpkin_seed'}, rarity = 34 },
+			{ items = {'farming:lime_seed'}, rarity = 34 }
 		}
 	},
 	groups = {snappy=3, flammable=2, sickle=1},

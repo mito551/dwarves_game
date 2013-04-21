@@ -16,6 +16,7 @@ dofile(minetest.get_modpath("default").."/player.lua")
 dofile(minetest.get_modpath("default").."/mapgen.lua")
 dofile(minetest.get_modpath("default").."/leafdecay.lua")
 dofile(minetest.get_modpath("default").."/dwarvestuff.lua")
+dofile(minetest.get_modpath("default").."/invtweak.lua")
 --
 -- Tool definition
 --
