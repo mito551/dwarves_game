@@ -3,7 +3,7 @@ dofile(minetest.get_modpath("mobs").."/api.lua")
 mobs:register_mob("mobs:dirt_monster", {
 	type = "monster",
 	hp_max = 5,
-	collisionbox = {-0.4, -1, -0.4, 0.4, 1, 0.4},
+	collisionbox = {-0.4, -1, -0.4, 0.4, 0.9, 0.4},
 	visual = "upright_sprite",
 	visual_size = {x=1, y=2},
 	textures = {"mobs_dirt_monster.png", "mobs_dirt_monster_back.png"},
@@ -31,10 +31,14 @@ mobs:register_spawn("mobs:dirt_monster", {"default:dirt_with_grass"}, 3, -1, 140
 mobs:register_mob("mobs:stone_monster", {
 	type = "monster",
 	hp_max = 10,
-	collisionbox = {-0.4, -1, -0.4, 0.4, 1, 0.4},
-	visual = "upright_sprite",
-	visual_size = {x=1, y=2},
-	textures = {"mobs_stone_monster.png", "mobs_stone_monster_back.png"},
+	collisionbox = {-0.4, 0, -0.4, 0.4, 1.9, 0.4},
+	--visual = "upright_sprite",
+	--visual_size = {x=1, y=2},
+	--textures = {"mobs_stone_monster.png", "mobs_stone_monster_back.png"},
+	visual = "mesh",
+	mesh = "mobs_stone_monster.x",
+	textures = {"mobs_stone_monster.png"},
+	visual_size = {x=3, y=2.6},
 	makes_footstep_sound = true,
 	view_range = 10,
 	walk_velocity = 0.5,
@@ -53,6 +57,16 @@ mobs:register_mob("mobs:stone_monster", {
 	lava_damage = 0,
 	light_damage = 0,
 	attack_type = "dogfight",
+	animation = {
+		speed_normal = 15,
+		speed_run = 15,
+		stand_start = 0,
+		stand_end = 14,
+		walk_start = 15,
+		walk_end = 38,
+		run_start = 40,
+		run_end = 63,
+	}
 })
 mobs:register_spawn("mobs:stone_monster", {"default:stone"}, 3, -1, 7000, 3, 0)
 
@@ -112,9 +126,9 @@ mobs:register_mob("mobs:sheep", {
 		random = "mobs_sheep",
 	},
 	animation = {
-		speed_normal = 10,
+		speed_normal = 15,
 		stand_start = 0,
-		stand_end = 59,
+		stand_end = 80,
 		walk_start = 81,
 		walk_end = 100,
 	},
