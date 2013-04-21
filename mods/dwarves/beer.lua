@@ -178,10 +178,10 @@ minetest.register_craftitem("dwarves:tequila", {
 	on_use = minetest.item_eat(3)
 })
 
-minetest.register_craftitem("dwarves:tequila_lime", {
+minetest.register_craftitem("dwarves:tequila_with_lime", {
 	description = "Tequila with Lime",
-	inventory_image = "dwarves_midus.png",
-	on_use = minetest.item_eat(3)
+	inventory_image = "dwarves_midus_with_lime.png",
+	on_use = minetest.item_eat(5)
 })
 
 minetest.register_craftitem("dwarves:sake", {

@@ -79,6 +79,9 @@ minetest.register_node("farming:tea", {
 			{ items = {'farming:tea_leaves'}, rarity = 5},
 		}
 	},
+	after_dig_node = function(pos)
+		minetest.env:add_node(pos, {name="farming:tea_2"})	
+	end,
 	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, sickle=1},
 	sounds = default.node_sound_leaves_defaults(),
 })

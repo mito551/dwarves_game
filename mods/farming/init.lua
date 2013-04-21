@@ -32,3 +32,6 @@ dofile(minetest.get_modpath("farming").."/rice.lua")
 
 -- ========= TEA =========
 dofile(minetest.get_modpath("farming").."/tea.lua")
+
+-- ========= LIME =========
+dofile(minetest.get_modpath("farming").."/lime.lua")
