@@ -26,7 +26,7 @@ mobs:register_mob("mobs:dirt_monster", {
 	on_rightclick = nil,
 	attack_type = "dogfight",
 })
-mobs:register_spawn("mobs:dirt_monster", {"default:dirt_with_grass"}, 3, -1, 140000, 1, 31000)
+mobs:register_spawn("mobs:dirt_monster", {"default:dirt_with_grass"}, 3, -1, 70000, 1, 31000)
 
 mobs:register_mob("mobs:stone_monster", {
 	type = "monster",
@@ -68,16 +68,20 @@ mobs:register_mob("mobs:stone_monster", {
 		run_end = 63,
 	}
 })
-mobs:register_spawn("mobs:stone_monster", {"default:stone"}, 3, -1, 7000, 3, 0)
+mobs:register_spawn("mobs:stone_monster", {"default:stone"}, 3, -1, 700000, 1, 0)
 
 
 mobs:register_mob("mobs:sand_monster", {
 	type = "monster",
 	hp_max = 3,
 	collisionbox = {-0.4, -1, -0.4, 0.4, 1, 0.4},
-	visual = "upright_sprite",
-	visual_size = {x=1, y=2},
-	textures = {"mobs_sand_monster.png", "mobs_sand_monster_back.png"},
+	--visual = "upright_sprite",
+	--visual_size = {x=1, y=2},
+	--textures = {"mobs_sand_monster.png", "mobs_sand_monster_back.png"},
+	visual = "mesh",
+	mesh = "mobs_sand_monster.x",
+	textures = {"mobs_sand_monster.png"},
+	visual_size = {x=8,y=8},
 	makes_footstep_sound = true,
 	view_range = 15,
 	walk_velocity = 1.5,
@@ -96,8 +100,18 @@ mobs:register_mob("mobs:sand_monster", {
 	lava_damage = 1,
 	light_damage = 0,
 	attack_type = "dogfight",
+	animation = {
+		speed_normal = 15,
+		speed_run = 15,
+		stand_start = 0,
+		stand_end = 39,
+		walk_start = 41,
+		walk_end = 72,
+		run_start = 74,
+		run_end = 105,
+	},
 })
-mobs:register_spawn("mobs:sand_monster", {"default:desert_sand"}, 20, -1, 7000, 3, 31000)
+mobs:register_spawn("mobs:sand_monster", {"default:desert_sand"}, 20, -1, 70000, 1, 31000)
 
 mobs:register_mob("mobs:sheep", {
 	type = "animal",
@@ -344,8 +358,8 @@ if minetest.setting_get("log_mods") then
 end
 
 --mobs.spawning_mobs["mobs:dirt_monster"]=false
-mobs.spawning_mobs["mobs:stone_monster"]=false
-mobs.spawning_mobs["mobs:sand_monster"]=false
+--mobs.spawning_mobs["mobs:stone_monster"]=false
+--mobs.spawning_mobs["mobs:sand_monster"]=false
 --mobs.spawning_mobs["mobs:sheep"]=false
 mobs.spawning_mobs["mobs:rat"]=false
 --mobs.spawning_mobs["mobs:oerkki"]=false
