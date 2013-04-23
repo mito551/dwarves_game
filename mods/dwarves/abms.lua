@@ -292,7 +292,7 @@ minetest.register_abm({nodenames = {"default:torch"},
 	end,
 })
 
-minetest.register_abm({nodenames = {"default:papyrus", "default:cactus"},
+--[[minetest.register_abm({nodenames = {"default:papyrus", "default:cactus"},
 	interval = 1.0,
 	chance = 1,
 	action =  function(pos, node, active_object_count, active_object_count_wider)
@@ -309,7 +309,7 @@ minetest.register_abm({nodenames = {"default:papyrus", "default:cactus"},
 		else
 		return nil end
 	return end
-})
+})--]]
 
 minetest.register_abm({nodenames = {"dwarves:hive", "dwarves:hive_artificial"},
 	interval = 1,

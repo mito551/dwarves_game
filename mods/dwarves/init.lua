@@ -773,7 +773,7 @@ minetest.register_craft({
 	recipe = {
 		{"dwarves:mossytree"},
 	},
-	replacements = {{"dwarves:mossytree", "dwarves:moss"}},
+	--replacements = {{"dwarves:mossytree", "dwarves:moss"}},
 })
 
 minetest.register_craft({
@@ -933,7 +933,7 @@ minetest.register_node("dwarves:diamond_ore", {
 	description = "Diamond Ore",
 	tiles = {"dwarves_mineral_diamond.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=4},
+	groups = {cracky=1, level=5},
 	drop = {
 		max_items = 1,
 		items = {
@@ -949,7 +949,7 @@ minetest.register_node("dwarves:mithril_ore", {
 	description = "Mithril Ore",
 	tiles = {"default_stone.png^dwarves_mineral_mithril.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=5},
+	groups = {cracky=1, level=5},
 	drop = {
 		max_items = 1,
 		items = {
@@ -965,7 +965,7 @@ minetest.register_node("dwarves:ebony_ore", {
 	description = "Ebony Ore",
 	tiles = {"default_stone.png^dwarves_mineral_ebony.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=3},
+	groups = {cracky=2, level=3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -981,7 +981,7 @@ minetest.register_node("dwarves:sapphire_ore", {
 	description = "Sapphire Ore",
 	tiles = {"dwarves_mineral_sapphire.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=4},
+	groups = {cracky=1, level=5},
 	drop = {
 		max_items = 1,
 		items = {
@@ -997,7 +997,7 @@ minetest.register_node("dwarves:ruby_ore", {
 	description = "Ruby Ore",
 	tiles = {"dwarves_mineral_ruby.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=3},
+	groups = {cracky=2, level=4},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1013,7 +1013,7 @@ minetest.register_node("dwarves:emerald_ore", {
 	description = "Emerald Ore",
 	tiles = {"dwarves_mineral_emerald.png"},
 	is_ground_content = true,
-	groups = {cracky=3, level=3},
+	groups = {cracky=2, level=4},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1049,7 +1049,7 @@ minetest.register_node("dwarves:obsidian", {
 			},
 		}
 	},
-	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=3},
+	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=4},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -1058,7 +1058,7 @@ minetest.register_node("dwarves:castiron", {
 	description = "Cast Iron",
 	tiles = {"dwarves_castiron.png"},
 	is_ground_content = true,
-	groups = {snappy=2,bendy=3,cracky=2,melty=3,level=4},
+	groups = {cracky=1,level=4},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -1076,7 +1076,7 @@ minetest.register_node("dwarves:mossytree", {
 	description = "Mossy Tree",
 	tiles = {"default_tree_top.png", "default_tree_top.png", "dwarves_mossytree.png"},
 	is_ground_content = true,
-	groups = {tree=1,snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2},
+	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=2},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -1084,7 +1084,7 @@ minetest.register_node("dwarves:mossywood", {
 	description = "Mossy Wooden Planks",
 	tiles = {"dwarves_mossywood.png"},
 	is_ground_content = true,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
+	groups = {schoppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
 	sounds = default.node_sound_wood_defaults(),
 })
 

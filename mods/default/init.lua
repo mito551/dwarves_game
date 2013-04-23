@@ -1009,14 +1009,14 @@ minetest.register_node("default:stone_with_copper", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("default:stone_with_mese", {
+--[[minetest.register_node("default:stone_with_mese", {
 	description = "Mese Crystals in Stone",
 	tiles = {"default_stone.png^default_mineral_mese.png"},
 	is_ground_content = true,
 	groups = {cracky=1},
 	drop = "default:mese_crystal",
 	sounds = default.node_sound_stone_defaults(),
-})
+})--]]
 
 minetest.register_node("default:stone_with_gold", {
 	description = "Gold Ore",
@@ -1280,7 +1280,7 @@ minetest.register_node("default:papyrus", {
 			{-0.06+0.1,0.02+0.3,-0.06+0.2, 0.06+0.1,0.02+0.3,0.06+0.2},
 		},
 	},
-	groups = {snappy=3,flammable=2},
+	groups = {snappy=3,flammable=2,attached_node=1},
 	sounds = default.node_sound_leaves_defaults()
 })
 
@@ -1366,7 +1366,7 @@ minetest.register_node("default:ladder", {
 		--wall_bottom = = <default>
 		--wall_side = = <default>
 	},
-	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2},
+	groups = {choppy=2,oddly_breakable_by_hand=3,flammable=2,attached_node=1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -1980,7 +1980,7 @@ minetest.register_node("default:mese", {
 	description = "Mese",
 	tiles = {"default_mese.png"},
 	is_ground_content = true,
-	groups = {cracky=1, level=2},
+	groups = {cracky=1, level=4},
 		drop = {
 		max_items = 4,
 		items = {
@@ -2015,7 +2015,10 @@ minetest.register_node("default:mese", {
 			{
 				items = {'dwarves:mithril_ingot'},
 				rarity = 15,
-			},				
+			},
+			{
+				items = {'default:mese_crystal'},
+			},			
 			{
 				items = {'default:iron_ingot'},
 			}
@@ -2024,6 +2027,57 @@ minetest.register_node("default:mese", {
 	sounds = default.node_sound_defaults(),
 })
 minetest.register_alias("default:mese_block", "default:mese")
+
+minetest.register_node("default:stone_with_mese", {
+	description = "Mese",
+	tiles = {"default_mese.png"},
+	is_ground_content = true,
+	groups = {cracky=1, level=4},
+		drop = {
+		max_items = 4,
+		items = {
+			{
+				items = {'default:gold_ingot'},
+				rarity = 15,
+			},
+			{
+				items = {'default:bronze_ingot'},
+				rarity = 15,
+			},
+			{
+				items = {'default:mese_crystal'},
+			},
+			{
+				items = {'default:copper_ingot'},
+				rarity = 15,
+			},
+			{
+				items = {'dwarves:obsidian'},
+				rarity = 15,
+			},
+			{
+				items = {'dwarves:ebony_ingot'},
+				rarity = 15
+			},
+			{
+				items = {'default:steel_ingot'},
+				rarity = 15,
+			},
+			{
+				items = {'dwarves:pobe'},
+				rarity = 15,
+			},		
+			{
+				items = {'dwarves:mithril_ingot'},
+				rarity = 15,
+			},				
+			{
+				items = {'default:iron_ingot'},
+			}
+		}
+	},
+	sounds = default.node_sound_defaults(),
+})
 
 minetest.register_node("default:goldblock", {
 	description = "Gold Block",
