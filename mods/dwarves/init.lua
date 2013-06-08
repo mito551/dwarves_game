@@ -88,6 +88,18 @@ minetest.register_node("dwarves:glass", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_node("dwarves:glass_vis", {
+	description = "Invisible Glass",
+	drawtype = "glasslike",
+	tiles = {"default_glass_vis.png"},
+	inventory_image = minetest.inventorycube("default_glass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3, level=1},
+	sounds = default.node_sound_glass_defaults(),
+})
+
 minetest.register_tool("dwarves:pick_ebony", {
 	description = "Ebony Pickaxe",
 	inventory_image = "dwarves_tool_ebonypick.png",
