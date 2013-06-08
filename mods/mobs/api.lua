@@ -16,6 +16,7 @@ function mobs:register_mob(name, def)
 		light_damage = def.light_damage,
 		water_damage = def.water_damage,
 		lava_damage = def.lava_damage,
+		disable_fall_damage = def.disable_fall_damage,
 		drops = def.drops,
 		armor = def.armor,
 		drawtype = def.drawtype,
@@ -26,6 +27,7 @@ function mobs:register_mob(name, def)
 		shoot_interval = def.shoot_interval,
 		sounds = def.sounds,
 		animation = def.animation,
+		follow = def.follow,
 		
 		timer = 0,
 		env_damage_timer = 0, -- only if state = "attack"
@@ -33,7 +35,8 @@ function mobs:register_mob(name, def)
 		state = "stand",
 		v_start = false,
 		old_y = nil,
-		
+		lifetimer = 600,
+		tamed = false,
 		
 		set_velocity = function(self, v)
 			local yaw = self.object:getyaw()
@@ -113,6 +116,20 @@ function mobs:register_mob(name, def)
 				self.object:remove()
 			end
 			
+			self.lifetimer = self.lifetimer - dtime
+			if self.lifetimer <= 0 and not self.tamed then
+				local player_count = 0
+				for _,obj in ipairs(minetest.env:get_objects_inside_radius(self.object:getpos(), 20)) do
+					if obj:is_player() then
+						player_count = player_count+1
+					end
+				end
+				if player_count == 0 and self.state ~= "attack" then
+					self.object:remove()
+					return
+				end
+			end
+			
 			if self.object:getvelocity().y > 0.1 then
 				local yaw = self.object:getyaw()
 				if self.drawtype == "side" then
@@ -125,17 +142,17 @@ function mobs:register_mob(name, def)
 				self.object:setacceleration({x=0, y=-10, z=0})
 			end
 			
-			if self.object:getvelocity().y == 0 then
+			if self.disable_fall_damage and self.object:getvelocity().y == 0 then
 				if not self.old_y then
 					self.old_y = self.object:getpos().y
 				else
 					local d = self.old_y - self.object:getpos().y
 					if d > 5 then
 						local damage = d-5
-						self.object:punch(self.object, 1.0, {
-							full_punch_interval=1.0,
-							damage_groups = {fleshy=damage/(self.armor/100)}
-						}, nil)
+						self.object:set_hp(self.object:get_hp()-damage)
+						if self.object:get_hp() == 0 then
+							self.object:remove()
+						end
 					end
 					self.old_y = self.object:getpos().y
 				end
@@ -164,28 +181,28 @@ function mobs:register_mob(name, def)
 					and minetest.env:get_timeofday() > 0.2
 					and minetest.env:get_timeofday() < 0.8
 				then
-					self.object:punch(self.object, 1.0, {
-						full_punch_interval=1.0,
-						damage_groups = {fleshy=self.light_damage/(self.armor/100)}
-					}, nil)
+					self.object:set_hp(self.object:get_hp()-self.light_damage)
+					if self.object:get_hp() == 0 then
+						self.object:remove()
+					end
 				end
 				
 				if self.water_damage and self.water_damage ~= 0 and
 					minetest.get_item_group(n.name, "water") ~= 0
 				then
-					self.object:punch(self.object, 1.0, {
-						full_punch_interval=1.0,
-						damage_groups = {fleshy=self.water_damage/(self.armor/100)}
-					}, nil)
+					self.object:set_hp(self.object:get_hp()-self.water_damage)
+					if self.object:get_hp() == 0 then
+						self.object:remove()
+					end
 				end
 				
 				if self.lava_damage and self.lava_damage ~= 0 and
 					minetest.get_item_group(n.name, "lava") ~= 0
 				then
-					self.object:punch(self.object, 1.0, {
-						full_punch_interval=1.0,
-						damage_groups = {fleshy=self.lava_damage/(self.armor/100)}
-					}, nil)
+					self.object:set_hp(self.object:get_hp()-self.lava_damage)
+					if self.object:get_hp() == 0 then
+						self.object:remove()
+					end
 				end
 			end
 			
@@ -218,10 +235,66 @@ function mobs:register_mob(name, def)
 				end
 			end
 			
+			if self.follow ~= "" and not self.following then
+				for _,player in pairs(minetest.get_connected_players()) do
+					local s = self.object:getpos()
+					local p = player:getpos()
+					local dist = ((p.x-s.x)^2 + (p.y-s.y)^2 + (p.z-s.z)^2)^0.5
+					if self.view_range and dist < self.view_range then
+						self.following = player
+					end
+				end
+			end
+			
+			if self.following and self.following:is_player() then
+				if self.following:get_wielded_item():get_name() ~= self.follow then
+					self.following = nil
+					self.v_start = false
+				else
+					local s = self.object:getpos()
+					local p = self.following:getpos()
+					local dist = ((p.x-s.x)^2 + (p.y-s.y)^2 + (p.z-s.z)^2)^0.5
+					if dist > self.view_range then
+						self.following = nil
+						self.v_start = false
+					else
+						local vec = {x=p.x-s.x, y=p.y-s.y, z=p.z-s.z}
+						local yaw = math.atan(vec.z/vec.x)+math.pi/2
+						if self.drawtype == "side" then
+							yaw = yaw+(math.pi/2)
+						end
+						if p.x > s.x then
+							yaw = yaw+math.pi
+						end
+						self.object:setyaw(yaw)
+						if dist > 2 then
+							if not self.v_start then
+								self.v_start = true
+								self.set_velocity(self, self.walk_velocity)
+							else
+								if self.get_velocity(self) <= 0.5 and self.object:getvelocity().y == 0 then
+									local v = self.object:getvelocity()
+									v.y = 5
+									self.object:setvelocity(v)
+								end
+								self.set_velocity(self, self.walk_velocity)
+							end
+							self:set_animation("walk")
+						else
+							self.v_start = false
+							self.set_velocity(self, 0)
+							self:set_animation("stand")
+						end
+						return
+					end
+				end
+			end
+			
 			if self.state == "stand" then
 				if math.random(1, 4) == 1 then
 					self.object:setyaw(self.object:getyaw()+((math.random(0,360)-180)/180*math.pi))
 				end
+				self.set_velocity(self, 0)
 				self.set_animation(self, "stand")
 				if math.random(1, 100) <= 50 then
 					self.set_velocity(self, self.walk_velocity)
@@ -231,18 +304,18 @@ function mobs:register_mob(name, def)
 			elseif self.state == "walk" then
 				if math.random(1, 100) <= 30 then
 					self.object:setyaw(self.object:getyaw()+((math.random(0,360)-180)/180*math.pi))
-					self.set_velocity(self, self.get_velocity(self))
-				end
-				self:set_animation("walk")
-				if math.random(1, 100) <= 10 then
-					self.set_velocity(self, 0)
-					self.state = "stand"
-					self:set_animation("stand")
 				end
 				if self.get_velocity(self) <= 0.5 and self.object:getvelocity().y == 0 then
 					local v = self.object:getvelocity()
 					v.y = 5
 					self.object:setvelocity(v)
+				end
+				self:set_animation("walk")
+				self.set_velocity(self, self.walk_velocity)
+				if math.random(1, 100) <= 10 then
+					self.set_velocity(self, 0)
+					self.state = "stand"
+					self:set_animation("stand")
 				end
 			elseif self.state == "attack" and self.attack_type == "dogfight" then
 				if not self.attack.player or not self.attack.player:is_player() then
@@ -341,7 +414,9 @@ function mobs:register_mob(name, def)
 						minetest.sound_play(self.sounds.attack, {object = self.object})
 					end
 					
-					local obj = minetest.env:add_entity(self.object:getpos(), self.arrow)
+					local p = self.object:getpos()
+					p.y = p.y + (self.collisionbox[2]+self.collisionbox[5])/2
+					local obj = minetest.env:add_entity(p, self.arrow)
 					local amount = (vec.x^2+vec.y^2+vec.z^2)^0.5
 					local v = obj:get_luaentity().velocity
 					vec.y = vec.y+1
@@ -353,7 +428,7 @@ function mobs:register_mob(name, def)
 			end
 		end,
 		
-		on_activate = function(self, staticdata)
+		on_activate = function(self, staticdata, dtime_s)
 			self.object:set_armor_groups({fleshy=self.armor})
 			self.object:setacceleration({x=0, y=-10, z=0})
 			self.state = "stand"
@@ -362,6 +437,27 @@ function mobs:register_mob(name, def)
 			if self.type == "monster" and minetest.setting_getbool("only_peaceful_mobs") then
 				self.object:remove()
 			end
+			self.lifetimer = 600 - dtime_s
+			if staticdata then
+				local tmp = minetest.deserialize(staticdata)
+				if tmp and tmp.lifetimer then
+					self.lifetimer = tmp.lifetimer - dtime_s
+				end
+				if tmp and tmp.tamed then
+					self.tamed = tmp.tamed
+				end
+			end
+			if self.lifetimer <= 0 and not self.tamed then
+				self.object:remove()
+			end
+		end,
+		
+		get_staticdata = function(self)
+			local tmp = {
+				lifetimer = self.lifetimer,
+				tamed = self.tamed,
+			}
+			return minetest.serialize(tmp)
 		end,
 		
 		on_punch = function(self, hitter)
