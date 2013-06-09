@@ -427,7 +427,7 @@ minetest.register_abm(
         end,
 })
 
-minetest.register_abm(
+--[[minetest.register_abm(
 	{nodenames = {"default:cactus"},
     interval = 0.75,
     chance = 1,
@@ -437,4 +437,58 @@ minetest.register_abm(
 		obj:set_hp(obj:get_hp()-1)
 	end
 	end,
-})
+})--]]
+
+minetest.register_abm({
+	nodenames = {"default:cactus"},
+	interval = 1,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		--pos.y =pos.y-0.4
+		for _,object in ipairs(minetest.env:get_objects_inside_radius(pos, 15.1/16)) do--1.3
+			if object:get_hp() > 0 then
+				object:set_hp(object:get_hp()-1)
+				if object:is_player() then
+					if CACTUS_HURT_SOUND then minetest.sound_play("dplus_hurt", {pos = pos, gain = 0.5, max_hear_distance = 10}) end
+				end
+			elseif not object:is_player() and object:get_hp() == 0 and object:get_luaentity().name ~= "__builtin:item" then
+				object:remove()
+			end
+		end
+	end})
+	
+local FLOWING_WATER_SOUND = true
+local LAVA_SOUND = true
+local LAVA_PARTICLE = true
+local CACTUS_HURT_SOUND = true
+local SLIPPERY_ICE = false  --experimental and default disabled
+
+if FLOWING_WATER_SOUND then
+minetest.register_abm({
+	nodenames = {"default:water_flowing"},
+	--neighbors = {"default:dirt_with_grass", "landscape:full_grass_block"},
+	interval = 1.8,
+	chance = 1.5,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.sound_play("dplus_water", {pos = pos, gain = 0.025, max_hear_distance = 2})
+	end})
+
+end
+
+if LAVA_SOUND or LAVA_PARTICLE then
+minetest.register_abm({
+	nodenames = {"default:lava_source"},
+	--neighbors = {"default:dirt_with_grass", "landscape:full_grass_block"},
+	interval = 2,
+	chance = 2,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		if LAVA_SOUND then minetest.sound_play("dplus_lava", {pos = pos, gain = 0.05, max_hear_distance = 1.5}) end
+			if LAVA_PARTICLE then
+				if math.random(1,13) == 8 then
+					local rnd = math.random(0,1)*-1
+					minetest.add_particle(pos, {x=0.1*rnd, y=0.8, z=-0.1*rnd}, {x=-0.5*rnd, y=0.2, z=0.5*rnd}, 1.7,
+   					1.2, true, "lava_particle.png")
+				end
+			end
+	end})
+end

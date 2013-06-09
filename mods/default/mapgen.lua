@@ -230,10 +230,10 @@ end
 function default.make_cactus(pos, size)
 	for y=0,size-1 do
 		local p = {x=pos.x, y=pos.y+y, z=pos.z}
-		local nn = minetest.env:get_node(p).name
+		local nn = minetest.get_node(p).name
 		if minetest.registered_nodes[nn] and
 			minetest.registered_nodes[nn].buildable_to then
-			minetest.env:set_node(p, {name="default:cactus"})
+			minetest.set_node(p, {name="default:cactus"})
 		else
 			return
 		end
