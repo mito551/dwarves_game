@@ -47,7 +47,7 @@ Adamantium (alloy = pobe + mithril + diamond, best tools in the game, a bit slow
 ...and MUCH and MUCH more!!
 
 depends:
-0.4.6
+0.4.7
 
 license:
 CC-BY-ND, leaving permission to create mods that require items from dwarves (for example furniture mod which will use my brass alloy)
