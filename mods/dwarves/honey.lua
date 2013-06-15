@@ -3,7 +3,7 @@ minetest.register_node("dwarves:hive_artificial", {
 	tiles = {"dwarves_hive_top.png", "dwarves_hive_top.png", "dwarves_hive_side.png",
 		"dwarves_hive_side.png", "dwarves_hive_side.png", "dwarves_hive_front.png"},
 	paramtype2 = "facedir",
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+	groups = {choppy=6,oddly_breakable_by_hand=5},
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
@@ -49,7 +49,7 @@ minetest.register_node("dwarves:hive", {
 
 		},
 	},
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+	groups = {choppy=6,oddly_breakable_by_hand=4},
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)

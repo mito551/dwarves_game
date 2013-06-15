@@ -173,6 +173,68 @@ minetest.register_ore({
 	height_min     = -31000,
 	height_max     = -64,
 })
+if minetest.setting_get("mg_name") == "indev" then
+	-- Floatlands and high mountains springs
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:water_source",
+		ore_param2     = 128,
+		wherein        = "default:stone",
+		clust_scarcity = 40*40*40,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		height_min     = 100,
+		height_max     = 31000,
+	})
+
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:lava_source",
+		ore_param2     = 128,
+		wherein        = "default:stone",
+		clust_scarcity = 50*50*50,
+		clust_num_ores = 5,
+		clust_size     = 2,
+		height_min     = 10000,
+		height_max     = 31000,
+	})
+
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:sand",
+		wherein        = "default:stone",
+		clust_scarcity = 20*20*20,
+		clust_num_ores = 5*5*3,
+		clust_size     = 5,
+		height_min     = 500,
+		height_max     = 31000,
+	})
+
+	-- Underground springs
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:water_source",
+		ore_param2     = 128,
+		wherein        = "default:stone",
+		clust_scarcity = 25*25*25,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		height_min     = -10000,
+		height_max     = -10,
+	})
+
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "default:lava_source",
+		ore_param2     = 128,
+		wherein        = "default:stone",
+		clust_scarcity = 35*35*35,
+		clust_num_ores = 5,
+		clust_size     = 2,
+		height_min     = -31000,
+		height_max     = -100,
+	})
+end
 function default.generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume, chunk_size, ore_per_chunk, height_min, height_max)
 	minetest.log('action', "WARNING: default.generate_ore is deprecated")
 
@@ -203,8 +265,8 @@ function default.generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume
 					local y2 = y0+y1
 					local z2 = z0+z1
 					local p2 = {x=x2, y=y2, z=z2}
-					if minetest.env:get_node(p2).name == wherein then
-						minetest.env:set_node(p2, {name=name})
+					if minetest.get_node(p2).name == wherein then
+						minetest.set_node(p2, {name=name})
 					end
 				end
 			end
@@ -217,10 +279,10 @@ end
 function default.make_papyrus(pos, size)
 	for y=0,size-1 do
 		local p = {x=pos.x, y=pos.y+y, z=pos.z}
-		local nn = minetest.env:get_node(p).name
+		local nn = minetest.get_node(p).name
 		if minetest.registered_nodes[nn] and
 			minetest.registered_nodes[nn].buildable_to then
-			minetest.env:set_node(p, {name="default:papyrus"})
+			minetest.set_node(p, {name="default:papyrus"})
 		else
 			return
 		end
@@ -258,11 +320,11 @@ function default.make_nyancat(pos, facedir, length)
 		tailvec.z = 1
 	end
 	local p = {x=pos.x, y=pos.y, z=pos.z}
-	minetest.env:set_node(p, {name="default:nyancat", param2=facedir})
+	minetest.set_node(p, {name="default:nyancat", param2=facedir})
 	for i=1,length do
 		p.x = p.x + tailvec.x
 		p.z = p.z + tailvec.z
-		minetest.env:set_node(p, {name="default:nyancat_rainbow"})
+		minetest.set_node(p, {name="default:nyancat_rainbow"})
 	end
 end
 
@@ -298,17 +360,17 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		for divz=0+1,divs-1-1 do
 			local cx = minp.x + math.floor((divx+0.5)*divlen)
 			local cz = minp.z + math.floor((divz+0.5)*divlen)
-			if minetest.env:get_node({x=cx,y=1,z=cz}).name == "default:water_source" and
-					minetest.env:get_node({x=cx,y=0,z=cz}).name == "default:sand" then
+			if minetest.get_node({x=cx,y=1,z=cz}).name == "default:water_source" and
+					minetest.get_node({x=cx,y=0,z=cz}).name == "default:sand" then
 				local is_shallow = true
 				local num_water_around = 0
-				if minetest.env:get_node({x=cx-divlen*2,y=1,z=cz+0}).name == "default:water_source" then
+				if minetest.get_node({x=cx-divlen*2,y=1,z=cz+0}).name == "default:water_source" then
 					num_water_around = num_water_around + 1 end
-				if minetest.env:get_node({x=cx+divlen*2,y=1,z=cz+0}).name == "default:water_source" then
+				if minetest.get_node({x=cx+divlen*2,y=1,z=cz+0}).name == "default:water_source" then
 					num_water_around = num_water_around + 1 end
-				if minetest.env:get_node({x=cx+0,y=1,z=cz-divlen*2}).name == "default:water_source" then
+				if minetest.get_node({x=cx+0,y=1,z=cz-divlen*2}).name == "default:water_source" then
 					num_water_around = num_water_around + 1 end
-				if minetest.env:get_node({x=cx+0,y=1,z=cz+divlen*2}).name == "default:water_source" then
+				if minetest.get_node({x=cx+0,y=1,z=cz+divlen*2}).name == "default:water_source" then
 					num_water_around = num_water_around + 1 end
 				if num_water_around >= 2 then
 					is_shallow = false
@@ -316,8 +378,8 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				if is_shallow then
 					for x1=-divlen,divlen do
 					for z1=-divlen,divlen do
-						if minetest.env:get_node({x=cx+x1,y=0,z=cz+z1}).name == "default:sand" then
-							minetest.env:set_node({x=cx+x1,y=0,z=cz+z1}, {name="default:clay"})
+						if minetest.get_node({x=cx+x1,y=0,z=cz+z1}).name == "default:sand" then
+							minetest.set_node({x=cx+x1,y=0,z=cz+z1}, {name="default:clay"})
 						end
 					end
 					end
@@ -326,7 +388,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		end
 		end
 		-- Generate papyrus
-		local perlin1 = minetest.env:get_perlin(354, 3, 0.7, 100)
+		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
 		-- Assume X and Z lengths are equal
 		local divlen = 8
 		local divs = (maxp.x-minp.x)/divlen+1;
@@ -343,15 +405,15 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			for i=0,papyrus_amount do
 				local x = pr:next(x0, x1)
 				local z = pr:next(z0, z1)
-				if minetest.env:get_node({x=x,y=1,z=z}).name == "default:dirt_with_grass" and
-						minetest.env:find_node_near({x=x,y=1,z=z}, 1, "default:water_source") then
+				if minetest.get_node({x=x,y=1,z=z}).name == "default:dirt_with_grass" and
+						minetest.find_node_near({x=x,y=1,z=z}, 1, "default:water_source") then
 					default.make_papyrus({x=x,y=2,z=z}, pr:next(2, 4))
 				end
 			end
 		end
 		end
 		-- Generate cactuses
-		local perlin1 = minetest.env:get_perlin(230, 3, 0.6, 100)
+		local perlin1 = minetest.get_perlin(230, 3, 0.6, 100)
 		-- Assume X and Z lengths are equal
 		local divlen = 16
 		local divs = (maxp.x-minp.x)/divlen+1;
@@ -371,20 +433,20 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level (0...15)
 				local ground_y = nil
 				for y=30,0,-1 do
-					if minetest.env:get_node({x=x,y=y,z=z}).name ~= "air" then
+					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
 						ground_y = y
 						break
 					end
 				end
 				-- If desert sand, make cactus
-				if ground_y and minetest.env:get_node({x=x,y=ground_y,z=z}).name == "default:desert_sand" then
+				if ground_y and minetest.get_node({x=x,y=ground_y,z=z}).name == "default:desert_sand" then
 					default.make_cactus({x=x,y=ground_y+1,z=z}, pr:next(3, 4))
 				end
 			end
 		end
 		end
 		-- Generate grass
-		local perlin1 = minetest.env:get_perlin(329, 3, 0.6, 100)
+		local perlin1 = minetest.get_perlin(329, 3, 0.6, 100)
 		-- Assume X and Z lengths are equal
 		local divlen = 16
 		local divs = (maxp.x-minp.x)/divlen+1;
@@ -404,7 +466,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				-- Find ground level (0...15)
 				local ground_y = nil
 				for y=30,0,-1 do
-					if minetest.env:get_node({x=x,y=y,z=z}).name ~= "air" then
+					if minetest.get_node({x=x,y=y,z=z}).name ~= "air" then
 						ground_y = y
 						break
 					end
@@ -412,18 +474,18 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				
 				if ground_y then
 					local p = {x=x,y=ground_y+1,z=z}
-					local nn = minetest.env:get_node(p).name
+					local nn = minetest.get_node(p).name
 					-- Check if the node can be replaced
 					if minetest.registered_nodes[nn] and
 						minetest.registered_nodes[nn].buildable_to then
-						nn = minetest.env:get_node({x=x,y=ground_y,z=z}).name
+						nn = minetest.get_node({x=x,y=ground_y,z=z}).name
 						-- If desert sand, make dry shrub
 						if nn == "default:desert_sand" then
-							minetest.env:set_node(p,{name="default:dry_shrub"})
+							minetest.set_node(p,{name="default:dry_shrub"})
 							
 						-- If grass, make junglegrass
 						elseif nn == "default:dirt_with_grass" then
-							minetest.env:set_node(p,{name="default:junglegrass"})
+							minetest.set_node(p,{name="default:junglegrass"})
 						end
 					end
 				end

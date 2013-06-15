@@ -2,7 +2,7 @@
 -- See README.txt for licensing and other information. 
 
 local function is_owner(pos, name)
-	local owner = minetest.env:get_meta(pos):get_string("owner")
+	local owner = minetest.get_meta(pos):get_string("owner")
 	if owner == "" or owner == name then
 		return true
 	end
@@ -20,7 +20,7 @@ minetest.register_node("bones:bones", {
 		"bones_front.png"
 	},
 	paramtype2 = "facedir",
-	groups = {dig_immediate=2},
+	groups = {dig_immediate=2, oddly_breakable_by_hand=7},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.45},
 	}),
@@ -96,7 +96,7 @@ minetest.register_on_dieplayer(function(player)
 	pos.z = math.floor(pos.z+0.5)
 	local param2 = minetest.dir_to_facedir(player:get_look_dir())
 	
-	minetest.env:add_node(pos, {name="bones:bones", param2=param2})
+	minetest.add_node(pos, {name="bones:bones", param2=param2})
 	
 	local meta = minetest.env:get_meta(pos)
 	local inv = meta:get_inventory()

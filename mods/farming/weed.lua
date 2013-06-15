@@ -23,7 +23,7 @@ minetest.register_node("farming:weed", {
 			{ items = {'farming:lime_seed'}, rarity = 34 }
 		}
 	},
-	groups = {snappy=3, flammable=2, sickle=1},
+	groups = {snappy=6, flammable=2, sickle=1},
 	sounds = default.node_sound_leaves_defaults()
 })
 

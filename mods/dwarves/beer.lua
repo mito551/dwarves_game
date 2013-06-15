@@ -31,7 +31,7 @@ minetest.register_node("dwarves:barrel", {
 
 		},
 	},
-groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+groups = {choppy=6,oddly_breakable_by_hand=5},
 legacy_facedir_simple = true,
 sounds = default.node_sound_wood_defaults(),
 water=5000;

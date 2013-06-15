@@ -131,11 +131,11 @@ if minetest.setting_getbool("creative_mode") then
 			full_punch_interval = 0.5,
 			max_drop_level = 3,
 			groupcaps = {
-				crumbly = {times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=6},
-				cracky = {times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=6},
-				snappy = {times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=6},
-				choppy = {times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=6},
-				oddly_breakable_by_hand = {times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=3},
+				crumbly = {times={[1]=0, [2]=0, [3]=0, [4]=0, [5]=0, [6]=0, [7]=0}, uses=0, maxlevel=7},
+				cracky = {times={[1]=0, [2]=0, [3]=0, [4]=0, [5]=0, [6]=0, [7]=0}, uses=0, maxlevel=7},
+				snappy = {times={[1]=0, [2]=0, [3]=0, [4]=0, [5]=0, [6]=0, [7]=0}, uses=0, maxlevel=7},
+				choppy = {times={[1]=0, [2]=0, [3]=0, [4]=0, [5]=0, [6]=0, [7]=0}, uses=0, maxlevel=7},
+				oddly_breakable_by_hand = {times={[1]=0, [2]=0, [3]=0, [4]=0, [5]=0, [6]=0, [7]=0}, uses=0, maxlevel=7},
 			}
 		}
 	})

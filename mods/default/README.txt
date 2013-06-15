@@ -14,7 +14,7 @@ http://www.gnu.org/licenses/lgpl-2.1.html
 
 License of media (textures and sounds)
 --------------------------------------
-Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)                                 
+Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Authors of media files
@@ -39,7 +39,6 @@ Cisoun's WTFPL texture pack:
   default_jungletree_top.png
   default_lava.png
   default_leaves.png
-  default_sand.png
   default_sapling.png
   default_sign_wall.png
   default_stone.png
@@ -77,13 +76,17 @@ VanessaE (WTFPL):
   default_nc_rb.png
   default_nc_side.png
   default_grass_*.png
+  default_desert_sand.png
+  default_desert_stone.png
+  default_desert_stone_brick.png
+  default_sand.png
+  default_sandstone_brick.png
 
 Calinou (CC BY-SA):
   default_brick.png
   default_clay_brick.png
   default_papyrus.png
   default_tool_steelsword.png
-  default_bronze_block.png
   default_bronze_ingot.png
   default_copper_ingot.png
   default_copper_lump.png
@@ -102,12 +105,10 @@ PilzAdam (WTFPL):
   default_obsidian_glass.png
   default_obsidian_shard.png
   default_mossycobble.png
-  default_gold_block.png
   default_gold_ingot.png
   default_gold_lump.png
   default_mineral_gold.png
   default_diamond.png
-  default_diamond_block.png
   default_tool_diamondpick.png
   default_tool_diamondsword.png
   default_tool_diamondshovel.png
@@ -119,12 +120,26 @@ PilzAdam (WTFPL):
   default_tool_bronzepick.png
   default_tool_bronzeshovel.png
   default_tool_bronzesword.png
+  default_snowball.png
 
 jojoa1997 (WTFPL):
   default_obsidian.png
 
 InfinityProject (WTFPL):
   default_mineral_diamond.png
+
+Splizard (CC BY-SA 3.0):
+  default_snow.png
+  default_snow_side.png
+  default_ice.png
+
+Zeg9 (CC BY-SA 3.0):
+  default_coal_block.png
+  default_steel_block.png
+  default_copper_block.png
+  default_bronze_block.png
+  default_gold_block.png
+  default_diamond_block.png
 
 Glass breaking sounds (CC BY 3.0):
   1: http://www.freesound.org/people/cmusounddesign/sounds/71947/

@@ -5,7 +5,7 @@ minetest.register_tool("default:pick_iron", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=30, maxlevel=2},
+			cracky = {times={[4]=2.80, [5]=1.70, [6]=1.70, [7]=0.70}, uses=20},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -18,7 +18,7 @@ minetest.register_tool("default:axe_iron", {
 
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[1]=3.00, [2]=1.60, [3]=1.00}, uses=30, maxlevel=2},
+			choppy={times={[4]=2.80, [5]=1.70, [6]=1.70, [7]=0.70}, uses=20},
 		},
 		damage_groups = {fleshy=4},		
 	},
@@ -31,7 +31,7 @@ minetest.register_tool("default:sword_iron", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			snappy={times={[1]=1.90, [2]=0.90, [3]=0.30}, uses=40, maxlevel=3},
+			snappy={times={[4]=2.80, [5]=1.70, [6]=1.70, [7]=0.70}, uses=20},
 		},
 		damage_groups = {fleshy=4},
 	}
@@ -45,7 +45,7 @@ minetest.register_tool("default:shovel_iron", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			crumbly = {times={[1]=1.10, [2]=0.50, [3]=0.30}, uses=30, maxlevel=3},
+			crumbly = {times={[4]=2.80, [5]=1.70, [6]=1.70, [7]=0.70}, uses=20},
 		},
 		damage_groups = {fleshy=4},
 	}
@@ -140,38 +140,3 @@ minetest.register_abm({
 		end
 	end,
 })
-
-minetest.register_node("default:rail", {
-	description = "Rail",
-	drawtype = "raillike",
-	tiles = {"default_rail.png", "default_rail_curved.png", "default_rail_t_junction.png", "default_rail_crossing.png"},
-	inventory_image = "default_rail.png",
-	wield_image = "default_rail.png",
-	paramtype = "light",
-	is_ground_content = true,
-	walkable = false,
-	selection_box = {
-		type = "fixed",
-                -- but how to specify the dimensions for curved and sideways rails?
-                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-	},
-	groups = {bendy=2,snappy=1,dig_immediate=2,rail=1,attached_node=1},
-		after_place_node = function(pos, placer, itemstack)
-		if not mesecon then
-			minetest.env:get_meta(pos):set_string("cart_acceleration", "0.5")
-		end
-	end,
-	
-	mesecons = {
-		effector = {
-			action_on = function(pos, node)
-				minetest.env:get_meta(pos):set_string("cart_acceleration", "0.5")
-			end,
-			
-			action_off = function(pos, node)
-				minetest.env:get_meta(pos):set_string("cart_acceleration", "0")
-			end,
-		},
-	},
-})
-

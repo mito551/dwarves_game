@@ -27,7 +27,7 @@ minetest.register_node("farming:lime_1", {
 			{-0.5, -0.5, -0.5, 0.5, -0.5+4/16, 0.5}
 		},
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=6, flammable=2, not_in_creative_inventory=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -43,7 +43,7 @@ minetest.register_node("farming:lime_2", {
 			{-0.5, -0.5, -0.5, 0.5, -0.5+7/16, 0.5}
 		},
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=6, flammable=2, not_in_creative_inventory=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -59,7 +59,7 @@ minetest.register_node("farming:lime_3", {
 			{-0.5, -0.5, -0.5, 0.5, -0.5+13/16, 0.5}
 		},
 	},
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1},
+	groups = {snappy=6, flammable=2, not_in_creative_inventory=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -80,7 +80,7 @@ minetest.register_node("farming:lime_grown", {
 	after_dig_node = function(pos)
 		minetest.env:add_node(pos, {name="farming:lime_2"})	
 	end,
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1, sickle=1},
+	groups = {snappy=6, flammable=2, not_in_creative_inventory=1, sickle=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 

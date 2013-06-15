@@ -158,7 +158,7 @@ minetest.register_node("torch:torch", {
 		wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.2, 0.1},
 		wall_side = {-0.5, -0.3, -0.1, -0.3, 0.3, 0.1},
 	},
-	groups = {tree=1,snappy=1,choppy=2,oddly_breakable_by_hand=1,attached_node=1},
+	groups = {tree=1,snappy=1,choppy=7,oddly_breakable_by_hand=6,attached_node=1},
 })
 
 --[[check if the torch is actually on a walkable node

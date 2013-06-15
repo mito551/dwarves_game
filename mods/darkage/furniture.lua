@@ -15,7 +15,7 @@ minetest.register_node("darkage:chain", {
 		--wall_bottom = = <default>
 		--wall_side = = <default>
 	},
-	groups = {snappy=1,cracky=2,oddly_breakable_by_hand=2},
+	groups = {snappy=5,cracky=6,oddly_breakable_by_hand=6},
 	legacy_wallmounted = true
 })
 
@@ -26,7 +26,7 @@ minetest.register_node('darkage:box', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 6 },
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
@@ -65,7 +65,7 @@ minetest.register_node('darkage:wood_shelves', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 6 },
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
@@ -115,7 +115,7 @@ minetest.register_node("darkage:iron_bars", {
 	is_ground_content = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {cracky=3},
+	groups = {cracky=6},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -140,7 +140,7 @@ minetest.register_node("darkage:iron_grille", {
 	is_ground_content = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {cracky=3},
+	groups = {cracky=6},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -153,7 +153,7 @@ minetest.register_node("darkage:wood_bars", {
 	is_ground_content = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=6,choppy=6},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -166,7 +166,7 @@ minetest.register_node("darkage:wood_grille", {
 	is_ground_content = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=6,choppy=6},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -179,7 +179,7 @@ minetest.register_node("darkage:wood_frame", {
 	is_ground_content = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=6,choppy=6},
 	sounds = default.node_sound_stone_defaults()
 })
 

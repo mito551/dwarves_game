@@ -21,8 +21,8 @@
 -- <http://www.gnu.org/licenses/>
 
 
--- set inventory_craft_small=1 in minetest.conf to limit inventory craft to 2x2
---[[if minetest.setting_getbool("inventory_craft_small")
+--set inventory_craft_small=1 in minetest.conf to limit inventory craft to 2x2
+if minetest.setting_getbool("inventory_craft_small")
 	and not minetest.setting_getbool("creative_mode")
 	and not minetest.get_modpath("inventory_plus") then
 		minetest.register_on_joinplayer(function(player)
@@ -162,7 +162,7 @@ workbench.register = function(width, recipe)
 		description = "WorkBench "..width.."x"..width,
 		tile_images = {"workbench_"..width.."x"..width.."_top.png","workbench_"..width.."x"..width.."_bottom.png","workbench_"..width.."x"..width.."_side.png"},
 		paramtype2 = "facedir",
-		groups = {cracky=2,craft_width=width,oddly_breakable_by_hand=1},
+		groups = {craft_width=width,choppy=6,oddly_breakable_by_hand=5},
 		legacy_facedir_simple = true,
 		sounds = default.node_sound_wood_defaults(),
 		on_construct = workbench.on_construct,

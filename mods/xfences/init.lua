@@ -1,7 +1,7 @@
 -- xFences mod by xyz
 -- most code is taken from xPanes
 
-local REPLACE_DEFAULT_FENCES = false
+local REPLACE_DEFAULT_FENCES = true
 
 local function rshift(x, by)
   return math.floor(x / 2 ^ by)
@@ -121,3 +121,5 @@ if REPLACE_DEFAULT_FENCES then
     })
     minetest.register_alias("default:fence_wood", "xfences:fence")
 end
+minetest.register_alias("default:fence_wood", "default:fence")
+minetest.register_alias("default:fence", "xfences:fence")

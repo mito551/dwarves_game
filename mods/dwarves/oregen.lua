@@ -83,13 +83,16 @@ end
 
 end)--]]
 
+--it will fail if clust_num_ores > clust_size^3
+--clust_num_ores < clust_size^3
+
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "dwarves:stone_with_obsidian",
 	wherein        = "default:stone",
 	clust_scarcity = 13*13*13,
 	clust_num_ores = 4,
-	clust_size     = 3+math.random(0,3),
+	clust_size     = 4+math.random(0,3),
 	height_min     = -31000,
 	height_max     = 64,
 })
@@ -100,7 +103,7 @@ minetest.register_ore({
 	wherein        = "default:stone",
 	clust_scarcity = 16*16*16,
 	clust_num_ores = 2,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = -31000,
 	height_max     = -64,
 })
@@ -111,7 +114,7 @@ minetest.register_ore({
 	wherein        = "default:stone",
 	clust_scarcity = 18*18*18,
 	clust_num_ores = 2,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = -31000,
 	height_max     = -64,
 })
@@ -122,7 +125,7 @@ minetest.register_ore({
 	wherein        = "default:stone",
 	clust_scarcity = 16*16*16,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = -31000,
 	height_max     = -128,
 })
@@ -133,7 +136,7 @@ minetest.register_ore({
 	wherein        = "default:stone",
 	clust_scarcity = 18*18*18,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = -31000,
 	height_max     = -128,
 })
@@ -144,7 +147,7 @@ minetest.register_ore({
 	wherein        = "default:stone",
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,4),
+	clust_size     = 2+math.random(0,4),
 	height_min     = -31000,
 	height_max     = -256,
 })
@@ -160,7 +163,7 @@ minetest.register_ore({
 	height_max     = -64,
 })
 
-minetest.register_ore({
+--[[minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "dwarves:stone_with_obsidian",
 	wherein        = "flolands:floatstone",
@@ -177,7 +180,7 @@ minetest.register_ore({
 	wherein        = "flolands:floatstone",
 	clust_scarcity = 16*16*16,
 	clust_num_ores = 2,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = 31000,
 	height_max     = 1000,
 })
@@ -188,7 +191,7 @@ minetest.register_ore({
 	wherein        = "flolands:floatstone",
 	clust_scarcity = 18*18*18,
 	clust_num_ores = 2,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = 31000,
 	height_max     = 1000,
 })
@@ -199,7 +202,7 @@ minetest.register_ore({
 	wherein        = "flolands:floatstone",
 	clust_scarcity = 16*16*16,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = 31000,
 	height_max     = 1000,
 })
@@ -210,7 +213,7 @@ minetest.register_ore({
 	wherein        = "flolands:floatstone",
 	clust_scarcity = 18*18*18,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,2),
+	clust_size     = 2+math.random(0,2),
 	height_min     = 31000,
 	height_max     = 1000,
 })
@@ -221,7 +224,7 @@ minetest.register_ore({
 	wherein        = "flolands:floatstone",
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 1,
-	clust_size     = 1+math.random(0,4),
+	clust_size     = 2+math.random(0,4),
 	height_min     = 31000,
 	height_max     = 1000,
 })
@@ -235,12 +238,23 @@ minetest.register_ore({
 	clust_size     = 2+math.random(0,4),
 	height_min     = 31000,
 	height_max     = 1000,
-})
+})--]]
 
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "dwarves:hive",
 	wherein        = "default:leaves",
+	clust_scarcity = 25*25*25,
+	clust_num_ores = 1,
+	clust_size     = 1,
+	height_min     = -31000,
+	height_max     = 31000,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "dwarves:hive",
+	wherein        = "default:jungleleaves",
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 1,
 	clust_size     = 1,

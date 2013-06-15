@@ -14,9 +14,9 @@ minetest.register_tool("dwarves:heal", {
 	inventory_image = "dwarves_tool_heal.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=1,
+
 		groupcaps={
-			fleshy={times={[1]=0.75, [2]=0.95, [3]=0.80}, uses=50, maxlevel=4},
+			fleshy={times={[3]=0.75, [4]=0.95, [7]=0.80}, uses=50},
 		},
 		damage_groups = {fleshy=-4},
 	}
@@ -30,7 +30,7 @@ minetest.register_tool("dwarves:dagger_steel", {
 		full_punch_interval = 0.5,
 		max_drop_level=0,
 		groupcaps={
-			choppy={times={[1]=4.25, [2]=2.45, [3]=2.25}, uses=150, maxlevel=2},
+			choppy={times={[3]=4.25, [4]=2.45, [7]=2.25}, uses=150},
 		},
 		damage_groups = {fleshy=7},	
 	}
@@ -41,9 +41,9 @@ minetest.register_tool("dwarves:dagger_ebony", {
 	inventory_image = "dwarves_tool_ebonyknife.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=4.25, [2]=2.45, [3]=2.25}, uses=150, maxlevel=2},
+			choppy={times={[3]=4.25, [4]=2.45, [7]=2.25}, uses=150},
 		},
 		damage_groups = {fleshy=9},	
 	}
@@ -54,9 +54,9 @@ minetest.register_tool("dwarves:dagger_obs", {
 	inventory_image = "dwarves_tool_obsdagger.png",
 	tool_capabilities = {
 		full_punch_interval = 0.5,
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=4.25, [2]=2.45, [3]=2.25}, uses=75, maxlevel=2},
+			choppy={times={[3]=4.25, [4]=2.45, [7]=2.25}, uses=75},
 		},
 		damage_groups = {fleshy=7},	
 	}
@@ -67,37 +67,13 @@ minetest.register_tool("dwarves:axe", {
 	inventory_image = "dwarves_sonic_axe.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=5,
+
 		groupcaps={
-			cracky={times={[1]=0.01, [2]=0.01, [3]=0.01, [4]=0.1, [5]=0.501, [6]=0.501}, uses=200, maxlevel=6},
-			crumbly={times={[1]=0.01, [2]=0.01, [3]=0.01, [4]=0.1, [5]=0.501, [6]=0.501}, uses=200, maxlevel=6},
-			snappy={times={[1]=0.01, [2]=0.01, [3]=0.01, [4]=0.1, [5]=0.5, [6]=0.501}, uses=200, maxlevel=6}
+			cracky={times={[3]=0.01, [4]=0.01, [2]=0.01, [4]=0.1, [5]=0.501, [1]=0.501}, uses=200},
+			crumbly={times={[3]=0.01, [4]=0.01, [2]=0.01, [4]=0.1, [5]=0.501, [1]=0.501}, uses=200},
+			snappy={times={[3]=0.01, [4]=0.01, [2]=0.01, [4]=0.1, [5]=0.5, [1]=0.501}, uses=200}
 		}
 	},
-})
-
-minetest.register_node("dwarves:glass", {
-	description = "Ultimate Glass",
-	drawtype = "glasslike",
-	tiles = {"default_glass.png"},
-	inventory_image = minetest.inventorycube("default_glass.png"),
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=6,cracky=6, level=6},
-	sounds = default.node_sound_glass_defaults(),
-})
-
-minetest.register_node("dwarves:glass_vis", {
-	description = "Invisible Glass",
-	drawtype = "glasslike",
-	tiles = {"default_glass_vis.png"},
-	inventory_image = minetest.inventorycube("default_glass.png"),
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=3,cracky=3, level=1},
-	sounds = default.node_sound_glass_defaults(),
 })
 
 minetest.register_tool("dwarves:pick_ebony", {
@@ -105,9 +81,9 @@ minetest.register_tool("dwarves:pick_ebony", {
 	inventory_image = "dwarves_tool_ebonypick.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=3,
+
 		groupcaps={
-			cracky={times={[1]=2.5, [2]=1.5, [3]=1.0}, uses=60, maxlevel=4},
+			cracky={times={[4]=2.80, [5]=1.70, [6]=1.30, [7]=0.5}, uses=60},
 		},
 		damage_groups = {fleshy=4},	
 	},
@@ -117,9 +93,9 @@ minetest.register_tool("dwarves:axe_ebony", {
 	description = "Ebony Axe",
 	inventory_image = "dwarves_tool_ebonyaxe.png",
 	tool_capabilities = {
-		max_drop_level=3,
+
 		groupcaps={
-			choppy={times={[1]=2.5, [2]=1.5, [3]=1.0}, uses=60, maxlevel=4},
+			choppy={times={[4]=2.80, [5]=1.70, [6]=1.30, [7]=0.5}, uses=60},
 		},
 		damage_groups = {fleshy=4},	
 	},
@@ -130,9 +106,9 @@ minetest.register_tool("dwarves:shovel_ebony", {
 	inventory_image = "dwarves_tool_ebonyshovel.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=3,
+
 		groupcaps={
-			crumbly={times={[1]=2.5, [2]=1.5, [3]=1.0}, uses=60, maxlevel=4},
+			crumbly={times={[4]=2.80, [5]=1.70, [6]=1.30, [7]=0.5}, uses=60},
 		},
 		damage_groups = {fleshy=2},	
 	},
@@ -143,9 +119,9 @@ minetest.register_tool("dwarves:sword_ebony", {
 	inventory_image = "dwarves_tool_ebonysword.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=1,
+
 		groupcaps={
-			fleshy={times={[1]=0.75, [2]=0.95, [3]=0.80}, uses=50, maxlevel=4},
+			fleshy={times={[3]=0.75, [4]=0.95, [7]=0.80}, uses=50},
 		},
 		damage_groups = {fleshy=7},
 	}
@@ -155,9 +131,9 @@ minetest.register_tool("dwarves:pick_obs", {
 	description = "Obsidian Pickaxe",
 	inventory_image = "dwarves_tool_obspick.png",
 	tool_capabilities = {
-		max_drop_level=1,
+
 		groupcaps={
-			cracky={times={[1]=4.5, [2]=2.0, [3]=1.5}, uses=100, maxlevel=2}
+			cracky={times={[5]=1.70, [6]=1.0, [7]=0.80}, uses=100}
 		},
 		damage_groups = {fleshy=4},	
 	},
@@ -167,9 +143,9 @@ minetest.register_tool("dwarves:shovel_obs", {
 	description = "Obsidian Shovel",
 	inventory_image = "dwarves_tool_obsshovel.png",
 	tool_capabilities = {
-		max_drop_level=1,
+
 		groupcaps={
-			crumbly={times={[1]=2.25, [2]=1.25, [3]=1.00}, uses=75, maxlevel=2}
+			crumbly={times={[5]=1.70, [6]=1.0, [7]=0.80}, uses=75}
 		},
 		damage_groups = {fleshy=2},	
 	},
@@ -180,9 +156,9 @@ minetest.register_tool("dwarves:axe_obs", {
 	description = "Obsidian Axe",
 	inventory_image = "dwarves_tool_obsaxe.png",
 	tool_capabilities = {
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=4.25, [2]=2.45, [3]=2.25}, uses=75, maxlevel=2},
+			choppy={times={[5]=1.70, [6]=1.0, [7]=0.80}, uses=75},
 		},
 		damage_groups = {fleshy=4},		
 	},
@@ -193,9 +169,9 @@ minetest.register_tool("dwarves:club_obs", {
 	inventory_image = "dwarves_tool_obsclub.png",
 	tool_capabilities = {
 		full_punch_interval = 1.2,
-		max_drop_level=1,
+
 		groupcaps={
-			snappy={times={[1]=1.90, [2]=0.90, [3]=0.30}, uses=40, maxlevel=4},
+			snappy={times={[3]=1.90, [4]=0.90, [7]=0.30}, uses=40},
 		},
 		damage_groups = {fleshy=6},
 	}
@@ -206,9 +182,9 @@ minetest.register_tool("dwarves:durin_axe", {
 	inventory_image = "dwarves_tool_durinaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.75,
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=3.50, [2]=1.50, [3]=1.60}, uses=200, maxlevel=1},
+			choppy={times={[3]=3.50, [4]=1.50, [7]=1.60}, uses=200},
 		},
 		damage_groups = {fleshy=14},
 	}
@@ -219,9 +195,9 @@ minetest.register_tool("dwarves:sword_obs", {
 	inventory_image = "dwarves_tool_obssword.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
-		max_drop_level=1,
+
 		groupcaps={
-			snappy={times={[1]=1.90, [2]=0.90, [3]=0.30}, uses=40, maxlevel=4},
+			snappy={times={[3]=1.90, [4]=0.90, [7]=0.30}, uses=40},
 		},
 		damage_groups = {fleshy=10},
 	}
@@ -232,9 +208,9 @@ minetest.register_tool("dwarves:bataxe_pob", {
 	inventory_image = "dwarves_tool_pobataxe.png",
 	tool_capabilities = {
 		full_punch_interval = 1.75,
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=3.50, [2]=1.50, [3]=1.60}, uses=200, maxlevel=1},
+			choppy={times={[3]=3.50, [4]=1.50, [7]=1.60}, uses=200},
 		},
 		damage_groups = {fleshy=14},
 	}
@@ -245,9 +221,8 @@ minetest.register_tool("dwarves:pick_adam", {
 	inventory_image = "dwarves_tool_adampick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
-		max_drop_level=3,
 		groupcaps={
-			cracky = {times={[1]=2.0, [2]=1.0, [3]=0.50}, uses=175, maxlevel=5},
+			cracky = {times={[1]=3.0, [2]=2.8, [3]=2.4, [4]=2.1, [5]=1.6, [6]=1.1, [7]=0.6}, uses=175},
 		},
 		damage_groups = {fleshy=5},
 	},
@@ -258,9 +233,8 @@ minetest.register_tool("dwarves:axe_adam", {
 	inventory_image = "dwarves_tool_adamaxe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
-		max_drop_level=1,
 		groupcaps={
-			choppy={times={[1]=2.10, [2]=0.90, [3]=0.50}, uses=200, maxlevel=5},
+			choppy={times={[1]=3.0, [2]=2.6, [3]=2.2, [4]=1.7, [5]=1.2, [6]=0.7, [7]=0.2}, uses=200},
 		},
 		damage_groups = {fleshy=6},
 	},
@@ -273,9 +247,9 @@ minetest.register_tool("dwarves:shovel_adam", {
 	wield_image = "dwarves_tool_adamshovel.png^[transformR90",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
-		max_drop_level=1,
+
 		groupcaps={
-			crumbly = {times={[1]=1.10, [2]=0.50, [3]=0.30}, uses=200, maxlevel=5},
+			crumbly = {times={[1]=3.0, [2]=2.6, [3]=2.2, [4]=1.7, [5]=1.2, [6]=0.7, [7]=0.2}, uses=200},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -285,9 +259,9 @@ minetest.register_tool("dwarves:axe_pobe", {
 	description = "Pobe Axe",
 	inventory_image = "dwarves_tool_pobaxe.png",
 	tool_capabilities = {
-		max_drop_level=1,
+
 		groupcaps={
-			choppy={times={[1]=0.90, [2]=0.70, [3]=0.45}, uses=75, maxlevel=5},
+			choppy={times={[1]=2.3, [2]=2.1, [3]=1.8, [4]=1.3, [5]=0.8, [6]=0.4, [7]=0.2}, uses=75},
 		},
 		damage_groups = {fleshy=7},
 	},
@@ -299,9 +273,9 @@ minetest.register_tool("dwarves:sword_pobe", {
 	inventory_image = "dwarves_tool_pobsword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.7,
-		max_drop_level=1,
+
 		groupcaps={
-			snappy={times={[1]=1.90, [2]=0.90, [3]=0.30}, uses=40, maxlevel=4},
+			snappy={times={[3]=1.90, [4]=0.90, [7]=0.30}, uses=40},
 		},
 		damage_groups = {fleshy=7},
 	}
@@ -894,7 +868,29 @@ minetest.register_craft({
 -- Node definitions
 --
 
--- default node sounds
+minetest.register_node("dwarves:glass", {
+	description = "Ultimate Glass",
+	drawtype = "glasslike",
+	tiles = {"default_glass.png"},
+	inventory_image = minetest.inventorycube("default_glass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=6,cracky=6},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+--[[minetest.register_node("dwarves:glass_vis", {
+	description = "Invisible Glass",
+	drawtype = "glasslike",
+	tiles = {"default_glass_vis.png"},
+	inventory_image = minetest.inventorycube("default_glass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3},
+	sounds = default.node_sound_glass_defaults(),
+})--]]
 
 minetest.register_node("dwarves:glass_lamp", {
 	description = "Glass Lamp",
@@ -905,7 +901,7 @@ minetest.register_node("dwarves:glass_lamp", {
 	light_source = LIGHT_MAX,
 	sunlight_propagates = true,
 	is_ground_content = true,
-	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky=7,oddly_breakable_by_hand=5},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -913,7 +909,7 @@ minetest.register_node("dwarves:stone_with_obsidian", {
 	description = "Obsidian Ore",
 	tiles = {"default_stone.png^dwarves_mineral_obsidian.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=5},
 	drop = {
 		max_items = 4,
 		items = {
@@ -945,7 +941,7 @@ minetest.register_node("dwarves:diamond_ore", {
 	description = "Diamond Ore",
 	tiles = {"dwarves_mineral_diamond.png"},
 	is_ground_content = true,
-	groups = {cracky=1, level=5},
+	groups = {cracky=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -961,7 +957,7 @@ minetest.register_node("dwarves:mithril_ore", {
 	description = "Mithril Ore",
 	tiles = {"default_stone.png^dwarves_mineral_mithril.png"},
 	is_ground_content = true,
-	groups = {cracky=1, level=5},
+	groups = {cracky=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -977,7 +973,7 @@ minetest.register_node("dwarves:ebony_ore", {
 	description = "Ebony Ore",
 	tiles = {"default_stone.png^dwarves_mineral_ebony.png"},
 	is_ground_content = true,
-	groups = {cracky=2, level=3},
+	groups = {cracky=4},
 	drop = {
 		max_items = 1,
 		items = {
@@ -993,7 +989,7 @@ minetest.register_node("dwarves:sapphire_ore", {
 	description = "Sapphire Ore",
 	tiles = {"dwarves_mineral_sapphire.png"},
 	is_ground_content = true,
-	groups = {cracky=1, level=5},
+	groups = {cracky=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1009,7 +1005,7 @@ minetest.register_node("dwarves:ruby_ore", {
 	description = "Ruby Ore",
 	tiles = {"dwarves_mineral_ruby.png"},
 	is_ground_content = true,
-	groups = {cracky=2, level=4},
+	groups = {cracky=3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1025,7 +1021,7 @@ minetest.register_node("dwarves:emerald_ore", {
 	description = "Emerald Ore",
 	tiles = {"dwarves_mineral_emerald.png"},
 	is_ground_content = true,
-	groups = {cracky=2, level=4},
+	groups = {cracky=3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -1061,7 +1057,7 @@ minetest.register_node("dwarves:obsidian", {
 			},
 		}
 	},
-	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=4},
+	groups = {cracky=4},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -1070,8 +1066,32 @@ minetest.register_node("dwarves:castiron", {
 	description = "Cast Iron",
 	tiles = {"dwarves_castiron.png"},
 	is_ground_content = true,
-	groups = {cracky=1,level=4},
+	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("dwarves:mossytree", {
+	description = "Mossy Tree",
+	tiles = {"default_tree_top.png", "default_tree_top.png", "dwarves_mossytree.png"},
+	is_ground_content = true,
+	groups = {tree=1,choppy=5,oddly_breakable_by_hand=4,flammable=2},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("dwarves:mossywood", {
+	description = "Mossy Wooden Planks",
+	tiles = {"dwarves_mossywood.png"},
+	is_ground_content = true,
+	groups = {choppy=6,oddly_breakable_by_hand=5,flammable=3,wood=1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("dwarves:rotten_wood", {
+	description = "Rotten Wooden Planks",
+	tiles = {"dwarves_rotten_wood.png"},
+	is_ground_content = true,
+	groups = {choppy=6,oddly_breakable_by_hand=5,flammable=3,wood=1},
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_craftitem("dwarves:obsidian_shard", {
@@ -1083,31 +1103,6 @@ minetest.register_craftitem("dwarves:charcoal", {
 	description = "Charcoal",
 	inventory_image = "default_coal_lump.png",
 })
-
-minetest.register_node("dwarves:mossytree", {
-	description = "Mossy Tree",
-	tiles = {"default_tree_top.png", "default_tree_top.png", "dwarves_mossytree.png"},
-	is_ground_content = true,
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=2},
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node("dwarves:mossywood", {
-	description = "Mossy Wooden Planks",
-	tiles = {"dwarves_mossywood.png"},
-	is_ground_content = true,
-	groups = {schoppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node("dwarves:rotten_wood", {
-	description = "Rotten Wooden Planks",
-	tiles = {"dwarves_rotten_wood.png"},
-	is_ground_content = true,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
 
 minetest.register_craftitem("dwarves:obsidian_lump", {
 	description = "Obsidian Chunk",

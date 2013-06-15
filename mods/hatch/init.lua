@@ -36,7 +36,7 @@ minetest.register_node("hatch:trapdoor", {
 	tiles = {"door_trapdoor.png", "door_trapdoor.png",  "default_wood.png",  "default_wood.png", "default_wood.png", "default_wood.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
+	groups = {snappy=6,choppy=6,oddly_breakable_by_hand=5,flammable=2,door=1},
 	sounds = default.node_sound_wood_defaults(),
 	drop = "hatch:trapdoor",
 	node_box = {
@@ -63,7 +63,7 @@ minetest.register_node("hatch:trapdoor_open", {
 	paramtype2 = "facedir",
 	pointable = true,
 	stack_max = 0,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
+	groups = {snappy=6,choppy=6,oddly_breakable_by_hand=5,flammable=2,door=1},
 	sounds = default.node_sound_wood_defaults(),
 	drop = "hatch:trapdoor",
 	node_box = {

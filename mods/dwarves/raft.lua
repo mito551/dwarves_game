@@ -8,7 +8,7 @@ minetest.register_node("dwarves:wooden_raft", {
 	tile_images = {"default_wood.png"},
 	is_ground_content = true,
 	visual_scale = 1.5,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+	groups = {choppy=6,oddly_breakable_by_hand=5,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
