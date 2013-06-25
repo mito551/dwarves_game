@@ -50,6 +50,4 @@ depends:
 0.4.7
 
 license:
-CC-BY-ND, leaving permission to create mods that require items from dwarves (for example furniture mod which will use my brass alloy)
-
-
+CC-BY-SA
