@@ -53,7 +53,7 @@ minetest.register_node("papyrus_bed:bed_bottom", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	stack_max = 1,
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+	groups = {choppy=7,oddly_breakable_by_hand=7,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
