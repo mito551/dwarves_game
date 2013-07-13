@@ -1205,7 +1205,7 @@ minetest.register_craftitem("dwarves:water_boiled", {
 })
 
 minetest.register_craftitem("dwarves:magic_essence", {
-	description = "King's Diamond",
+	description = "Arkenstone",
 	inventory_image = "dwarves_magic_essence.png",
 })
 

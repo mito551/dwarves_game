@@ -78,19 +78,7 @@ minetest.register_tool("default:pick_mese", {
 
 
 -- Shovels
-minetest.register_tool("default:shovel_wood", {
-	description = "Wooden Shovel",
-	inventory_image = "default_tool_woodshovel.png",
-	wield_image = "default_tool_woodshovel.png^[transformR90",
-	tool_capabilities = {
-		full_punch_interval = 1.2,
-		max_drop_level=0,
-		groupcaps={
-			crumbly = {times={[6]=1.60, [7]=1.0}, uses=10},
-		},
-		damage_groups = {fleshy=2},
-	},
-})
+
 minetest.register_tool("default:shovel_stone", {
 	description = "Stone Shovel",
 	inventory_image = "default_tool_stoneshovel.png",
@@ -145,18 +133,7 @@ minetest.register_tool("default:shovel_mese", {
 })
 
 -- Axes
-minetest.register_tool("default:axe_wood", {
-	description = "Wooden Axe",
-	inventory_image = "default_tool_woodaxe.png",
-	tool_capabilities = {
-		full_punch_interval = 1.0,
-		max_drop_level=0,
-		groupcaps={
-			choppy = {times={[6]=1.60, [7]=1.0}, uses=10},
-		},
-		damage_groups = {fleshy=2},
-	},
-})
+
 minetest.register_tool("default:axe_stone", {
 	description = "Stone Axe",
 	inventory_image = "default_tool_stoneaxe.png",
@@ -207,7 +184,7 @@ minetest.register_tool("default:axe_mese", {
 })
 
 
--- Swords
+--[[ Swords
 minetest.register_tool("default:sword_wood", {
 	description = "Wooden Sword",
 	inventory_image = "default_tool_woodsword.png",
@@ -219,7 +196,7 @@ minetest.register_tool("default:sword_wood", {
 		},
 		damage_groups = {fleshy=2},
 	}
-})
+})--]]
 minetest.register_tool("default:sword_stone", {
 	description = "Stone Sword",
 	inventory_image = "default_tool_stonesword.png",

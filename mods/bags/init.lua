@@ -76,7 +76,7 @@ minetest.register_on_joinplayer(function(player)
 		end,
 		allow_take = function(inv, listname, index, stack, player)
 			if player:get_inventory():is_empty(listname.."contents")==true then
-				return stack:get_size(listname)
+				return stack:get_count()
 			else
 				return 0
 			end
@@ -114,25 +114,25 @@ minetest.register_tool("bags:large", {
 minetest.register_craft({
 	output = "bags:small",
 	recipe = {
-        {"", "default:stick", ""},
-        {"default:wood", "default:wood", "default:wood"},
-        {"default:wood", "default:wood", "default:wood"},
+        {"default:stick"},
+        {"wool:white"},
     },
 })
+
 minetest.register_craft({
 	output = "bags:medium",
 	recipe = {
         {"", "default:stick", ""},
-        {"bags:small", "bags:small", "bags:small"},
-        {"bags:small", "bags:small", "bags:small"},
+        {"wool:white", "wool:white", "wool:white"},
     },
 })
+
 minetest.register_craft({
 	output = "bags:large",
 	recipe = {
         {"", "default:stick", ""},
-        {"bags:medium", "bags:medium", "bags:medium"},
-        {"bags:medium", "bags:medium", "bags:medium"},
+        {"wool:white", "wool:white", "wool:white"},
+        {"wool:white", "wool:white", "wool:white"},
     },
 })
 

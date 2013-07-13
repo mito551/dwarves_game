@@ -8,7 +8,7 @@ minetest.register_node("default:needles", {
 	visual_scale = 1.3,
 	tiles = {"snow_needles.png"},
 	paramtype = "light",
-	groups = {snappy=3, leafdecay=3, flammable=2},
+	groups = {snappy=6, leafdecay=3, flammable=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -46,7 +46,7 @@ minetest.register_node("default:needles_decorated", {
 	drawtype = "allfaces_optional",
 	tiles = {"snow_needles_decorated.png"},
 	paramtype = "light",
-	groups = {snappy=3, leafdecay=3, flammable=2},
+	groups = {snappy=6, leafdecay=3, flammable=2},
 		drop = {
 		max_items = 1,
 		items = {
@@ -87,7 +87,7 @@ minetest.register_node("default:xmas_tree", {
 	wield_image = "snow_xmas_tree.png",
 	paramtype = "light",
 	walkable = false,
-	groups = {snappy=2,dig_immediate=3,flammable=2},
+	groups = {snappy=7,dig_immediate=3,flammable=2},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -100,7 +100,7 @@ minetest.register_node("default:sapling_pine", {
 	wield_image = "snow_sapling_pine.png",
 	paramtype = "light",
 	walkable = false,
-	groups = {snappy=2,dig_immediate=3,flammable=2},
+	groups = {snappy=7,dig_immediate=3,flammable=2},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -112,7 +112,7 @@ minetest.register_node("default:star", {
 	wield_image = "snow_star.png",
 	paramtype = "light",
 	walkable = false,
-	groups = {snappy=2,dig_immediate=3},
+	groups = {snappy=7,dig_immediate=3},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -253,7 +253,7 @@ minetest.register_node("default:dirt_with_snow", {
 	description = "Dirt with Snow",
 	tiles = {"snow_snow.png", "default_dirt.png", "default_dirt.png^snow_snow_side.png"},
 	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {crumbly=6},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_snow_footstep", gain=0.4},
@@ -299,7 +299,7 @@ minetest.register_node("default:snow_block", {
 	--2 = Papyrus
 	--3 = Dry shrub
 	is_ground_content = true,
-	groups = {crumbly=3,melts=2,falling_node=1},
+	groups = {crumbly=6,melts=2,falling_node=1},
 	drop = 'default:snow_block',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
@@ -337,7 +337,7 @@ minetest.register_node("default:snow_brick", {
 	description = "Snow Brick",
 	tiles = {"snow_snow_brick.png"},
 	is_ground_content = true,
-	groups = {crumbly=3,melts=2},
+	groups = {crumbly=5,melts=2},
 	drop = 'default:snow_brick',
 	sounds = default.node_sound_dirt_defaults(),
 })
@@ -349,7 +349,7 @@ minetest.register_node("default:ice", {
 	is_ground_content = true,
 	use_texture_alpha = true,
 	drawtype = "glasslike",
-	groups = {snappy=2,cracky=3,melts=1},
+	groups = {snappy=5,cracky=5,melts=1},
 	drop = 'default:ice',
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -368,7 +368,7 @@ minetest.register_node("default:moss", {
 		type = "wallmounted",
 	},
 	is_ground_content = true,
-	groups = {crumbly=3, flammable=2, attached_node=1},
+	groups = {crumbly=7, flammable=2, attached_node=1},
 })
 
 minetest.register_craft({
