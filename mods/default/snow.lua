@@ -112,7 +112,7 @@ minetest.register_node("default:star", {
 	wield_image = "snow_star.png",
 	paramtype = "light",
 	walkable = false,
-	groups = {snappy=7,dig_immediate=3},
+	groups = {snappy=7,dig_immediate=3,attached_node=1},
 	sounds = default.node_sound_defaults(),
 })
 
