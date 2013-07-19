@@ -399,7 +399,7 @@ minetest.register_node("default:ladder", {
 			 {-0.32, -0.5+(3/4)-(1/8)-(1/16), 0.47, 0.32, -0.5+(3/4)-(1/8)+(1/16), 0.4},
 			 {-0.32, -0.5+(4/4)-(1/8)-(1/16), 0.47, 0.32, -0.5+(4/4)-(1/8)+(1/16), 0.4},},
 	},
-	groups = {choppy=7,oddly_breakable_by_hand=6,flammable=2,attached_node=1},
+	groups = {choppy=7,oddly_breakable_by_hand=6,flammable=2},
 	sounds = default.node_sound_wood_defaults(),
 })
 
