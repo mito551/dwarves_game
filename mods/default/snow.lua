@@ -203,7 +203,7 @@ minetest.register_node("default:snow", {
 	--param2 is reserved for what vegetation is hiding inside.
 	--mapgen defines the vegetation.
 	--1 = Moss
-	groups = {crumbly=3,melts=3},
+	groups = {crumbly=6,melts=3},
 	buildable_to = true,
 	drop = 'default:snowball',
 	node_box = {

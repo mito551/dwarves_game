@@ -433,7 +433,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'dwarves:knife_ebony',
+	output = 'dwarves:dagger_ebony',
 	recipe = {
 		{'dwarves:ebony_ingot'},
 		{'default:stick'},
@@ -441,7 +441,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'dwarves:knife_steel',
+	output = 'dwarves:dagger_steel',
 	recipe = {
 		{'default:steel_ingot'},
 		{'default:stick'},

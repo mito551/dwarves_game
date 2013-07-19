@@ -39,15 +39,12 @@ mobs:register_mob("mobs:dirt_monster", {
 		punch_end = 63,
 	}
 })
-mobs:register_spawn("mobs:dirt_monster", {"default:dirt_with_grass"}, 3, -1, 70000, 1, 31000)
+
 
 mobs:register_mob("mobs:stone_monster", {
 	type = "monster",
 	hp_max = 10,
-	collisionbox = {-0.4, 0, -0.4, 0.4, 1.9, 0.4},
-	--visual = "upright_sprite",
-	--visual_size = {x=1, y=2},
-	--textures = {"mobs_stone_monster.png", "mobs_stone_monster_back.png"},
+	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1.9, 0.4},
 	visual = "mesh",
 	mesh = "mobs_stone_monster.x",
 	textures = {"mobs_stone_monster.png"},
@@ -83,16 +80,12 @@ mobs:register_mob("mobs:stone_monster", {
 		punch_end = 63,
 	}
 })
-mobs:register_spawn("mobs:stone_monster", {"default:stone"}, 3, -1, 700000, 1, 0)
 
 
 mobs:register_mob("mobs:sand_monster", {
 	type = "monster",
 	hp_max = 3,
-	collisionbox = {-0.4, -1, -0.4, 0.4, 1, 0.4},
-	--visual = "upright_sprite",
-	--visual_size = {x=1, y=2},
-	--textures = {"mobs_sand_monster.png", "mobs_sand_monster_back.png"},
+	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1.9, 0.4},
 	visual = "mesh",
 	mesh = "mobs_sand_monster.x",
 	textures = {"mobs_sand_monster.png"},
@@ -128,7 +121,6 @@ mobs:register_mob("mobs:sand_monster", {
 		punch_end = 105,
 	},
 })
-mobs:register_spawn("mobs:sand_monster", {"default:desert_sand"}, 20, -1, 70000, 1, 31000)
 
 mobs:register_mob("mobs:tree_monster", {
 	type = "monster",
@@ -174,14 +166,12 @@ mobs:register_mob("mobs:tree_monster", {
 		punch_end = 62,
 	},
 })
-mobs:register_spawn("mobs:tree_monster", {"default:leaves", "default:jungleleaves"}, 3, -1, 700000, 3, 31000)
+
+
 mobs:register_mob("mobs:sheep", {
 	type = "animal",
 	hp_max = 5,
 	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1, 0.4},
-
-
-
 	textures = {"mobs_sheep.png"},
 	visual = "mesh",
 	mesh = "mobs_sheep.x",
@@ -243,14 +233,13 @@ mobs:register_mob("mobs:sheep", {
 				clicker:get_inventory():add_item("main", ItemStack("wool:white "..math.random(1,3)))
 			end
 			self.object:set_properties({
-
 				textures = {"mobs_sheep_shaved.png"},
 				mesh = "mobs_sheep_shaved.x",
 			})
 		end
 	end,
 })
-mobs:register_spawn("mobs:sheep", {"default:dirt_with_grass"}, 20, 8, 90000, 1, 31000)
+
 
 minetest.register_craftitem("mobs:meat_raw", {
 	description = "Raw Meat",
@@ -273,10 +262,7 @@ minetest.register_craft({
 mobs:register_mob("mobs:rat", {
 	type = "animal",
 	hp_max = 1,
-	collisionbox = {-0.2, 0, -0.2, 0.2, 0.2, 0.2},
-	--visual = "upright_sprite",
-	--visual_size = {x=0.7, y=0.35},
-	--textures = {"mobs_rat.png", "mobs_rat.png"},
+	collisionbox = {-0.2, -0.01, -0.2, 0.2, 0.2, 0.2},
 	visual = "mesh",
 	mesh = "mobs_rat.x",
 	textures = {"mobs_rat.png"},
@@ -328,10 +314,7 @@ minetest.register_craft({
 mobs:register_mob("mobs:oerkki", {
 	type = "monster",
 	hp_max = 8,
-	collisionbox = {-0.4, 0, -0.4, 0.4, 2, 0.4},
-	--visual = "upright_sprite",
-	--visual_size = {x=1, y=2},
-	--textures = {"mobs_oerkki.png", "mobs_oerkki_back.png"},
+	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1.9, 0.4},
 	visual = "mesh",
 	mesh = "mobs_oerkki.x",
 	textures = {"mobs_oerkki.png"},
@@ -362,14 +345,13 @@ mobs:register_mob("mobs:oerkki", {
 		speed_run = 15,
 	},
 })
-mobs:register_spawn("mobs:oerkki", {"default:stone"}, 2, -1, 70000, 1, -10)
+
 
 mobs:register_mob("mobs:dungeon_master", {
 	type = "monster",
 	hp_max = 10,
 	collisionbox = {-0.7, -0.01, -0.7, 0.7, 2.6, 0.7},
 	visual = "mesh",
-
 	mesh = "mobs_dungeon_master.x",
 	textures = {"mobs_dungeon_master.png"},
 	visual_size = {x=8, y=8},
@@ -407,7 +389,7 @@ mobs:register_mob("mobs:dungeon_master", {
 		speed_run = 15,
 	},
 })
-mobs:register_spawn("mobs:dungeon_master", {"default:stone"}, 2, -1, 7000, 1, -50)
+
 
 mobs:register_arrow("mobs:fireball", {
 	visual = "sprite",
@@ -458,6 +440,17 @@ mobs:register_arrow("mobs:fireball", {
 if minetest.setting_get("log_mods") then
 	minetest.log("action", "mobs loaded")
 end
+
+
+mobs:register_spawn("mobs:dirt_monster", {"default:dirt_with_grass"}, 3, -1, 70000, 1, 31000)
+mobs:register_spawn("mobs:dungeon_master", {"default:stone"}, 2, -1, 7000, 1, -50)
+mobs:register_spawn("mobs:oerkki", {"default:stone"}, 2, -1, 70000, 1, -10)
+mobs:register_spawn("mobs:rat", {"default:dirt_with_grass", "default:stone"}, 20, -1, 7000, 1, 31000)
+mobs:register_spawn("mobs:sheep", {"default:dirt_with_grass"}, 20, 8, 90000, 1, 31000)
+mobs:register_spawn("mobs:stone_monster", {"default:stone"}, 3, -1, 700000, 1, 0)
+mobs:register_spawn("mobs:sand_monster", {"default:desert_sand"}, 20, -1, 70000, 1, 31000)
+mobs:register_spawn("mobs:tree_monster", {"default:leaves", "default:jungleleaves"}, 3, -1, 700000, 3, 31000)
+
 
 --mobs.spawning_mobs["mobs:dirt_monster"]=false
 --mobs.spawning_mobs["mobs:stone_monster"]=false
