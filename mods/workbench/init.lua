@@ -22,7 +22,7 @@
 
 
 --set inventory_craft_small=1 in minetest.conf to limit inventory craft to 2x2
-if minetest.setting_getbool("inventory_craft_small")
+--[[if minetest.setting_getbool("inventory_craft_small")
 	and not minetest.setting_getbool("creative_mode")
 	and not minetest.get_modpath("inventory_plus") then
 		minetest.register_on_joinplayer(function(player)
