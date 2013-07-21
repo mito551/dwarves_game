@@ -1,20 +1,3 @@
-
--- Override moreores weapons (make them more powerful)
-
-minetest.register_tool(":moreores:sword_mithril", {
-	description = "Mithril Sword",
-	inventory_image = "moreores_tool_mithrilsword.png",
-	tool_capabilities = {
-		full_punch_interval = 0.8,
-		max_drop_level=1,
-		groupcaps={
-			fleshy={times={[0]=0.65, [1]=0.50, [2]=0.40, [3]=0.30}, uses=50, maxlevel=3},			
-			snappy={times={[2]=0.80, [3]=0.40}, uses=100, maxlevel=1},
-			choppy={times={[3]=0.90}, uses=50, maxlevel=0}
-		}
-	}
-})
-
 -- Regisiter Head Armor
 
 minetest.register_tool("more_armor:helmet_mithril", {
@@ -86,4 +69,6 @@ minetest.register_craft({
 		{"", "moreores:mithril_ingot", ""},
 	},
 })
+
+minetest.register_alias("moreores:mithril_ingot", "dwarves:mithril_ingot")
 
