@@ -1,4 +1,3 @@
-
 minetest.register_craft({
 	output = 'default:wood 4',
 	recipe = {
@@ -36,6 +35,16 @@ minetest.register_craft({
 		{'', 'default:stick', ''},
 	}
 })
+
+minetest.register_craft({
+	output = 'default:pick_wood',
+	recipe = {
+		{'group:wood', 'group:wood', 'group:wood'},
+		{'', 'default:stick', ''},
+		{'', 'default:stick', ''},
+	}
+})
+
 
 minetest.register_craft({
 	output = 'default:pick_stone',
