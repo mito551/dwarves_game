@@ -100,7 +100,7 @@ minetest.register_tool("default:shovel_steel", {
 		full_punch_interval = 1.1,
 		max_drop_level=1,
 		groupcaps={
-			crumbly = {times={[4]=2.80, [5]=1.70, [6]=1.70, [7]=0.70}, uses=25},
+			crumbly = {times={[4]=1.80, [5]=1.3, [6]=0.8, [7]=0.5}, uses=25},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -113,7 +113,7 @@ minetest.register_tool("default:shovel_bronze", {
 		full_punch_interval = 1.1,
 		max_drop_level=1,
 		groupcaps={
-			crumbly = {times={[3]=2.80, [4]=2.10, [5]=1.70, [6]=1.30, [7]=0.60}, uses=40},
+			crumbly = {times={[3]=2.80, [4]=2.10, [5]=1.40, [6]=0.50, [7]=0.30}, uses=40},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -126,7 +126,7 @@ minetest.register_tool("default:shovel_mese", {
 		full_punch_interval = 1.0,
 		max_drop_level=3,
 		groupcaps={
-			crumbly = {times={[2]=3.0, [3]=2.4, [4]=1.2, [5]=1.70, [6]=1.30, [7]=0.50}, uses=20},
+			crumbly = {times={[2]=3.0, [3]=2.4, [4]=1.2, [5]=1.70, [6]=0.3, [7]=0.1}, uses=20},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -153,7 +153,7 @@ minetest.register_tool("default:axe_steel", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[3]=2.50, [4]=1.40, [7]=1.00}, uses=25},
+			choppy = {times={[4]=1.80, [5]=1.3, [6]=0.8, [7]=0.5}, uses=25},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -165,7 +165,7 @@ minetest.register_tool("default:axe_bronze", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[3]=2.50, [4]=1.40, [7]=1.00}, uses=30},
+			choppy = {times={[3]=2.80, [4]=2.10, [5]=1.40, [6]=0.50, [7]=0.30}, uses=40},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -177,7 +177,7 @@ minetest.register_tool("default:axe_mese", {
 		full_punch_interval = 0.9,
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[3]=2.20, [4]=1.00, [7]=0.60}, uses=20},
+			choppy = {times={[2]=3.0, [3]=2.4, [4]=1.2, [5]=1.70, [6]=0.3, [7]=0.1}, uses=20},
 		},
 		damage_groups = {fleshy=6},
 	},

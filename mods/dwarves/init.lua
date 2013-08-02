@@ -534,32 +534,16 @@ minetest.register_craft({
 minetest.register_craft( {
 	output = 'craft "dwarves:gold_chumps" 9',
 	recipe = {
-		{'craft "moreores:gold_ingot"'},
+		{'craft "default:gold_ingot"'},
 	}
 })
 
 minetest.register_craft( {
-	output = 'craft "dwarves:silver_chumps" 9',
-	recipe = {
-		{'craft "moreores:silver_ingot"'},
-	}
-})
-
-minetest.register_craft( {
-	output = 'craft "moreores:gold_ingot"',
+	output = 'craft "default:gold_ingot"',
 	recipe = {
 		{'dwarves:gold_chumps', 'dwarves:gold_chumps', 'dwarves:gold_chumps' },
 		{'dwarves:gold_chumps', 'dwarves:gold_chumps', 'dwarves:gold_chumps' },
 		{'dwarves:gold_chumps', 'dwarves:gold_chumps', 'dwarves:gold_chumps' },
-	}
-})
-
-minetest.register_craft( {
-	output = 'craft "moreores:silver_ingot"',
-	recipe = {
-		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
-		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
-		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
 	}
 })
 
@@ -570,7 +554,25 @@ minetest.register_craft( {
 	}
 })
 
-minetest.register_craft({
+--[[minetest.register_craft( {
+	output = 'craft "moreores:silver_ingot"',
+	recipe = {
+		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
+		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
+		{'dwarves:silver_chumps', 'dwarves:silver_chumps', 'dwarves:silver_chumps' },
+	}
+})
+
+minetest.register_craft( {
+	output = 'craft "dwarves:silver_chumps" 9',
+	recipe = {
+		{'craft "moreores:silver_ingot"'},
+	}
+})
+
+--]]
+
+--[[minetest.register_craft({
 	output = 'dwarves:silver_ring',
 	recipe = {
 		{'dwarves:silver_chumps', 'dwarves:silver_chumps'},
@@ -654,7 +656,7 @@ minetest.register_craft({
 		{'dwarves:silver_chumps', 'dwarves:sapphire', 'dwarves:silver_chumps'},
 		{'', 'dwarves:silver_chumps', ''},
 	}
-})
+})--]]
 
 minetest.register_craft({
 	output = 'craft "dwarves:glass_lamp" 2',
@@ -1169,10 +1171,10 @@ minetest.register_craftitem("dwarves:gold_chumps", {
 	inventory_image = "dwarves_golden_chunk.png",
 })
 
-minetest.register_craftitem("dwarves:silver_chumps", {
+--[[minetest.register_craftitem("dwarves:silver_chumps", {
 	description = "Silver Chunk",
 	inventory_image = "dwarves_silver_chunk.png",
-})
+})--]]
 
 minetest.register_craftitem("dwarves:mithril_lump", {
 	description = "Mithril Lump",
