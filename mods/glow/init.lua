@@ -99,7 +99,7 @@ minetest.register_abm({
 		"default:grass_4",
 		"default:grass_5",
 	},
-	interval = 1.0,
+	interval = 15,
 	chance = 600,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		if minetest.get_timeofday() > 0.74 or minetest.get_timeofday() < 0.22 then
