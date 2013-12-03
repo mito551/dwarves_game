@@ -29,6 +29,9 @@ dofile(minetest.get_modpath("default").."/tools.lua")
 dofile(minetest.get_modpath("default").."/craftitems.lua")
 dofile(minetest.get_modpath("default").."/crafting.lua")
 dofile(minetest.get_modpath("default").."/snow.lua")
+dofile(minetest.get_modpath("default").."/trees.lua")
+dofile(minetest.get_modpath("default").."/biomes.lua")
+
 --
 -- Tool definition
 --

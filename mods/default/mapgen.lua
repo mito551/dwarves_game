@@ -20,12 +20,15 @@ minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_cobble", "default:cobble")
 minetest.register_alias("mapgen_mossycobble", "default:mossycobble")
 minetest.register_alias("mapgen_dirt_with_grass", "default:dirt_with_grass")
+minetest.register_alias("mapgen_dirt_with_snow", "default:dirt_with_snow")
 minetest.register_alias("mapgen_junglegrass", "default:junglegrass")
 minetest.register_alias("mapgen_stone_with_coal", "default:stone_with_coal")
 minetest.register_alias("mapgen_stone_with_iron", "default:stone_with_iron")
 minetest.register_alias("mapgen_mese", "default:mese")
 minetest.register_alias("mapgen_desert_sand", "default:desert_sand")
 minetest.register_alias("mapgen_desert_stone", "default:desert_stone")
+minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
+minetest.register_alias("mapgen_ice", "default:ice")
 
 --
 -- Ore generation
@@ -51,6 +54,7 @@ minetest.register_ore({
 	clust_size     = 6,
 	height_min     = -31000,
 	height_max     = 0,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -84,6 +88,7 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -31000,
 	height_max     = -64,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -95,6 +100,7 @@ minetest.register_ore({
 	clust_size     = 6,
 	height_min     = -31000,
 	height_max     = -64,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -106,6 +112,7 @@ minetest.register_ore({
 	clust_size     = 2,
 	height_min     = -255,
 	height_max     = -64,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -117,6 +124,7 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -31000,
 	height_max     = -256,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -128,6 +136,7 @@ minetest.register_ore({
 	clust_size     = 2,
 	height_min     = -31000,
 	height_max     = -1024,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -139,6 +148,7 @@ minetest.register_ore({
 	clust_size     = 2,
 	height_min     = -255,
 	height_max     = -64,
+	flags          = "absheight",
 })
 
 minetest.register_ore({
@@ -172,8 +182,9 @@ minetest.register_ore({
 	clust_size     = 3,
 	height_min     = -31000,
 	height_max     = -64,
+	flags          = "absheight",
 })
-if minetest.setting_get("mg_name") == "indev" then
+--if minetest.setting_get("mg_name") == "indev" then
 	-- Floatlands and high mountains springs
 	minetest.register_ore({
 		ore_type       = "scatter",
@@ -234,7 +245,17 @@ if minetest.setting_get("mg_name") == "indev" then
 		height_min     = -31000,
 		height_max     = -100,
 	})
-end
+--end
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "default:clay",
+	wherein        = "default:sand",
+	clust_scarcity = 15*15*15,
+	clust_num_ores = 64,
+	clust_size     = 5,
+	height_max     = 0,
+	height_min     = -10,
+})
 function default.generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume, chunk_size, ore_per_chunk, height_min, height_max)
 	minetest.log('action', "WARNING: default.generate_ore is deprecated")
 
@@ -315,7 +336,7 @@ function default.make_nyancat(pos, facedir, length)
 	elseif facedir == 3 then
 		tailvec.x = -1
 	else
-		print("default.make_nyancat(): Invalid facedir: "+dump(facedir))
+		--print("default.make_nyancat(): Invalid facedir: "+dump(facedir))
 		facedir = 0
 		tailvec.z = 1
 	end
@@ -324,7 +345,7 @@ function default.make_nyancat(pos, facedir, length)
 	for i=1,length do
 		p.x = p.x + tailvec.x
 		p.z = p.z + tailvec.z
-		minetest.set_node(p, {name="default:nyancat_rainbow"})
+		minetest.set_node(p, {name="default:nyancat_rainbow", param2=facedir})
 	end
 end
 
@@ -352,41 +373,6 @@ end
 
 minetest.register_on_generated(function(minp, maxp, seed)
 	if maxp.y >= 2 and minp.y <= 0 then
-		-- Generate clay
-		-- Assume X and Z lengths are equal
-		local divlen = 4
-		local divs = (maxp.x-minp.x)/divlen+1;
-		for divx=0+1,divs-1-1 do
-		for divz=0+1,divs-1-1 do
-			local cx = minp.x + math.floor((divx+0.5)*divlen)
-			local cz = minp.z + math.floor((divz+0.5)*divlen)
-			if minetest.get_node({x=cx,y=1,z=cz}).name == "default:water_source" and
-					minetest.get_node({x=cx,y=0,z=cz}).name == "default:sand" then
-				local is_shallow = true
-				local num_water_around = 0
-				if minetest.get_node({x=cx-divlen*2,y=1,z=cz+0}).name == "default:water_source" then
-					num_water_around = num_water_around + 1 end
-				if minetest.get_node({x=cx+divlen*2,y=1,z=cz+0}).name == "default:water_source" then
-					num_water_around = num_water_around + 1 end
-				if minetest.get_node({x=cx+0,y=1,z=cz-divlen*2}).name == "default:water_source" then
-					num_water_around = num_water_around + 1 end
-				if minetest.get_node({x=cx+0,y=1,z=cz+divlen*2}).name == "default:water_source" then
-					num_water_around = num_water_around + 1 end
-				if num_water_around >= 2 then
-					is_shallow = false
-				end	
-				if is_shallow then
-					for x1=-divlen,divlen do
-					for z1=-divlen,divlen do
-						if minetest.get_node({x=cx+x1,y=0,z=cz+z1}).name == "default:sand" then
-							minetest.set_node({x=cx+x1,y=0,z=cz+z1}, {name="default:clay"})
-						end
-					end
-					end
-				end
-			end
-		end
-		end
 		-- Generate papyrus
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
 		-- Assume X and Z lengths are equal

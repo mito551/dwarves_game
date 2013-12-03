@@ -332,30 +332,6 @@ minetest.register_node("default:snow_block", {
 	end,
 })
 
---Snow brick.
-minetest.register_node("default:snow_brick", {
-	description = "Snow Brick",
-	tiles = {"snow_snow_brick.png"},
-	is_ground_content = true,
-	groups = {crumbly=5,melts=2},
-	drop = 'default:snow_brick',
-	sounds = default.node_sound_dirt_defaults(),
-})
-
---Ice.
-minetest.register_node("default:ice", {
-	description = "Ice",
-	tiles = {"snow_ice.png"},
-	is_ground_content = true,
-	use_texture_alpha = true,
-	drawtype = "glasslike",
-	groups = {snappy=5,cracky=5,melts=1},
-	drop = 'default:ice',
-	paramtype = "light",
-	sunlight_propagates = true,
-	sounds = default.node_sound_glass_defaults(),
-})
-
 --Moss.
 minetest.register_node("default:moss", {
 	description = "Moss",
@@ -604,4 +580,33 @@ minetest.register_alias("snow:snow_block", "default:snow_block")
 minetest.register_alias("snow:snowball", "default:snowball")
 minetest.register_alias("snow:needles", "default:needles")
 minetest.register_alias("snow:snow_brick", "default:snow_brick")
+
+minetest.register_node("default:snow_brick", {
+	description = "Snow Brick",
+	tiles = {"snow_snow_brick.png"},
+	is_ground_content = true,
+	freezemelt = "default:water_source",
+	groups = {crumbly=5,melt=2},
+	drop = 'default:snow_brick',
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_snow_footstep", gain=0.25},
+		dug = {name="default_snow_footstep", gain=0.75},
+	}),
+})
+
+--Ice.
+minetest.register_node("default:ice", {
+	description = "Ice",
+	tiles = {"snow_ice.png"},
+	is_ground_content = true,
+	use_texture_alpha = true,
+	drawtype = "glasslike",
+	groups = {snappy=5,cracky=5,melt=3},
+	drop = 'default:ice',
+	paramtype = "light",
+	freezemelt = "default:water_source",
+	groups = {snappy=5,cracky=5,melt=3, slippery=1},
+	sunlight_propagates = true,
+	sounds = default.node_sound_glass_defaults(),
+})
 
