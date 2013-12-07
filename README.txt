@@ -1,4 +1,4 @@
-Minetest Dwarves
+Freeminer Dwarves
 ==========================
 Install in $path_share/games/
 
